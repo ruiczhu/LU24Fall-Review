@@ -173,11 +173,11 @@ items.
 ### 3. Test Condition for Continuous Attributes
 ![image_8.png](image_8.png)
 
-## Model Evaluation
+## 6. Model Evaluation
 
-### Metrics for Performance Evaluation
+### 1. Metrics for Performance Evaluation
 ![image_9.png](image_9.png)
 
-### Limitation of Accuracy
+### 2. Limitation of Accuracy
 
-### Computing Cost of Classification
+### 3. Computing Cost of Classification
