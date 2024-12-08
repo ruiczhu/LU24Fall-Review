@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="in"
+                 name="LU24Fall-Term1-review"
+                 start-page="starter.md">
+
+    <toc-element topic="starter.md"/>
+    <toc-element topic="CDS535-DataMining.md"/>
+    <toc-element topic="CDS532-Programming.md"/>
+    <toc-element topic="CDS528-Blockchain.md"/>
+    <toc-element topic="CDS534-Database.md"/>
+    <toc-element topic="CDS533-Statistics.md"/>
+</instance-profile>
