@@ -866,6 +866,45 @@ main()
 
 ## Lecture 8 - Function
 
+### 1. Functions and Parameters
+<p style="display: block;">
+  <img src="image_75.png" alt="image_75"/>
+</p>
+
+- A function is called by using its name followed by a list of actual parameters 
+or arguments.
+```
+<name>(<actual-parameters>)
+```
+
+- When Python comes to a function call, it initiates a **four-step** process.
+1. The calling program suspends execution at the point of the call.
+2. The formal parameters of the function get assigned the values supplied
+by the actual parameters in the call. 
+3. The body of the function is executed. 
+4. Control returns to the point just after where the function was called
+
+### 2. Functions That Return Values
+- One "gotcha" – all Python functions return a value, whether they contain a
+return statement or not. Functions without a return hand back a special
+object, denoted None. 
+- A common problem is writing a value-returning function and omitting the
+return!
+- If your value-returning functions produce strange messages, check to make
+sure you remembered to include the return!
+
+### 3. Functions that Modify Parameters
+- The formal parameters of a function only receive the values of the actual parameters
+(i.e. Each formal parameter become a extra reference to the value of the
+corresponding actual parameter). 
+- The function does not have access to the actual parameter variable. 
+- Python is said to pass all parameters by object reference.
+
+<p style="display: block;">
+  <img src="image_76.png" alt="image_76"/>
+</p>
+<tip>这块是重点，Lecture 8 PPT上有完整的函数执行流程，这里就不全截图了。</tip>
+
 ## Lecture 9 - Packaging
 
 ## Lecture 10 - NumPy
