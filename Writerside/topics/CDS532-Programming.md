@@ -1652,7 +1652,58 @@ Note: rename() function will not change the original series.
 Therefore, remember to assign the return value as a new variable
 </note>
 
-### 5. Panel
+### 15. Basic Metadata
+<p style="display: block;">
+  <img src="image_114.png" alt="image_114"/>
+</p>
+
+### 16. Statistic functions
+<p style="display: block;">
+  <img src="image_115.png" alt="image_115"/>
+</p>
+
+<p style="display: block;">
+  <img src="image_116.png" alt="image_116"/>
+</p>
+
+<p style="display: block;">
+  <img src="image_117.png" alt="image_117"/>
+</p>
+
+### 17. Loading External Data to Pandas
+- Pandas supports importing or exporting data from / to different kinds of
+external files
+- Here are some of the most commonly-used files to store data:
+1. CSV
+2. Microsoft Excel 
+3. HDF5 
+4. SQL 
+5. XML 
+6. JSON 
+7. Python’s Pickle
+
+### 18. Importing/exporting data from/to Excel
+- Microsoft Excel use spreadsheets to store tabular data in the file with file
+  extensions .xls or .xlsx
+- To import data from Excel file as a DataFrame object:
+- To export data from a DataFrame object to an Excel file
+```python
+input_df = pandas.read_excel('input.xlsx', index_col=0)
+
+output_df.to_excel('output.xlsx')
+```
+
+### 19. CSV – Read & Write
+- Importing data from a csv file to a panda dataframe
+- Writing data from a panda dataframe to a csv file
+
+```python
+df = pandas.read_csv('input.csv')
+
+df.to_csv('output.csv')
+```
+
+
 
 ## Python Syntax Reference Sheet
 ![image_21.png](image_21.png)
