@@ -170,6 +170,8 @@ fractional part is 0)
   - Most mathematical algorithms are very efficient with integers
   - The float type stores only an approximation to the real number being represented!
 
+<tip>IMPORTANT！！！</tip>
+
 #### 4. Assignment Statements
 ```
   <variable> = <expr>
@@ -270,6 +272,8 @@ main()
 #### 3. NOT
 ![image_47.png](image_47.png)
 
+<tip>IMPORTANT！！！</tip>
+
 ### 2. Boolean Expressions
 <p style="display: block;">
   <img src="image_48.png" alt="image_48"/>
@@ -277,6 +281,7 @@ main()
 <p style="display: block;">
   <img src="image_49.png" alt="image_49"/>
 </p>
+<tip>IMPORTANT！！！</tip>
 
 ### 3. Boolean Expressions as Decisions - Example
 ```python
@@ -583,6 +588,9 @@ print(character)
 so string operations also apply to sequences!</tip>
 
 ### 8. Lists as Sequences
+
+<tip>IMPORTANT！！！</tip>
+
 <tip>Strings are always sequences of characters, but lists can be sequences of 
 arbitrary values. <br/>
 Lists can have numbers, strings, or both!</tip>
@@ -727,6 +735,7 @@ with open('example.txt', 'r') as file:
 ```
 
 ## Lecture 7 - Data Collection
+<tip>IMPORTANT！！！</tip>
 
 ### 1. Lists and Arrays
 - A list or array is a sequence of items where the entire sequence is referred
@@ -798,6 +807,7 @@ print(myList)
 </p>
 
 ### 4. Dictionary
+<tip>IMPORTANT！！！</tip>
 - A dictionary is a collection that allows us to look up a piece of information
   (value) associated with an arbitrary key.
 - Its working principle is similar to a locker cabinet
@@ -973,8 +983,225 @@ fibonacci(10)
 ```
 
 ## Lecture 9 - Packaging
+### 1. Importing functions from module/package
+<p style="display: block;">
+  <img src="image_80.png" alt="image_80"/>
+</p>
+
+### 2. Import a function from a module directly
+- To import a function in a module directly into our program
+```
+from <module_name> import <function_name>
+```
+- To import every function in the module directly into our program  
+```
+from <module_name> import *
+```
+<tip>It is not recommended in general as it often causes poorly readable code</tip>
+
+- To import a module to our program
+```
+import <module_name>
+```
+- After import, the target function can be used by first specifying the name of
+the corresponding module and then the name of function
+```
+<module_name>.<function_name>()
+```
+- Example
+```python
+import math
+math.sqrt(100)
+```
+
+### 3. Import a function from a package directly
+- To import a function in a package directly into our program
+```
+from <package_name>.<module_name> import <function_name>
+```
+- To import every function in the package directly into our program
+```
+from <package_name>.<module_name> import *
+```
+- Example
+```python
+from numpy.random import rand
+rand(3,2)
+```
+
+### 4. Assigning new names for imported modules
+- New names can be assigned to modules imported to avoid name collision
+```
+import <module_name> as <new_name>
+```
+- Example
+```python
+import math as mathLib
+mathLib.sqrt(100)
+```
+
+### 5. Assigning new names for imported functions
+- New names can be assigned to functions imported to avoid name collision
+```
+from <module_name> import <function_name> as <new_name>
+```
+- Example
+```python
+from math import sqrt as sqrt_imported
+sqrt_imported(100)
+```
 
 ## Lecture 10 - NumPy
+<tip>IMPORTANT！！！</tip>
+
+### 1. What is NumPy?
+- Fundamental package for scientific computing with Python 
+- Contains a powerful N-dimensional array object 
+- Provides sophisticated (broadcasting) functions 
+- Can integrate C/C++ and Fortran code 
+- Useful linear algebra, Fourier transform, and random number capabilities
+
+### 2. Introduction to NumPy Array
+- NumPy has a multi-dimensional array object, ndarray. It consists of
+  - The actual data 
+  - Some meta-data describing the data 
+- Ndarray behaves similarly to a vector or a matrix.
+- Ndarray is homogeneous (i.e. all data elements have the same). 
+- The index of Ndarrays starts from 0.
+
+### 3. Creating Ndarray
+- The array() function creates an Ndarray from an object provided. The
+  object needs to be array-like, e.g., a Python list.
+```python
+import numpy as np
+vector_1d = np.array([2, 4, 6, 8, 10, 12])
+```
+![image_81.png](image_81.png)
+
+- The array() function creates an Ndarray from an object provided. The
+  object needs to be array-like, e.g., a Python list.
+```python
+import numpy as np
+matrix_2d = np.array([[3, 4, 5], [6, 7, 8]])
+```
+![image_82.png](image_82.png)
+<tip>The matrix is specified in a row-by-row manner, 
+starting from the first row to the last row</tip>
+
+- The array() function creates an Ndarray from an object provided. The
+  object needs to be array-like, e.g., a Python list.
+```python
+tensor_3d = np.array([[[10, 11, 12], [13, 14, 15]], [[16, 17, 
+18], [19, 20, 21]]])
+```
+
+![image_83.png](image_83.png)
+<tip>The 3D tensor is specified in a page-by-page manner, starting from the first 
+matrix(page) to the last matrix (page)</tip>
+
+- The **arange()** and **linspace()** functions can create arrays containing a
+continuous sequence of numbers
+```python
+import numpy as np
+vector_1 = np.arange(1, 9, 2)
+vector_2 = np.linspace(0, 1, 11)
+
+print(vector_1)
+print(vector_2)
+# Output: [1 3 5 7]
+# Output: [0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ]
+```
+
+<p style="display: block;">
+  <img src="image_84.png" alt="image_84"/>
+</p>
+<p style="display: block;">
+  <img src="image_85.png" alt="image_85"/>
+</p>
+
+- The **zeros()** and **ones()** functions can create arrays with zeros and ones
+respectively.
+```Python
+np.zeros((2, 4))
+np.ones((2, 3, 4))
+```
+
+- The **eye()** functions creates an Identity matrix.
+```Python
+np.eye(4)
+```
+
+- The **diag()** function creates a matrix with the diagonal elements taking
+from an 1-D array.
+```Python
+np.diag(np.array([2, 3, 4]))
+```
+
+- NumPy has build-in functions which support generating NumPy arrays with
+  various kinds of distributions: uniform, standard normal, beta, Dirichlet, ...
+```Python
+np.random.rand(3)
+np.random.standard_normal((2, 3, 4))
+```
+
+### 4. Accessing Basic Metadata of Arrays
+- The **ndim** attribute of a Ndarray returns the number of dimensions
+```
+<Ndarray>.ndim
+```
+
+- The **shape** attribute describes the number of elements in each dimension
+```
+<Ndarray>.shape
+```
+
+- The **size** attribute returns the total number of elements in an array object
+```
+<Ndarray>.size
+```
+
+- The **dtype** attribute returns the data type of elements in an array object
+```
+<Ndarray>.dtype
+```
+
+### 5. Data Type of Nparray
+- NumPy auto-detects the data-type from the input.
+- To create a Nparray with an explicit defined data type:
+```Python
+  np.array([1, 2, 3, 4, 5], dtype='int8')
+```
+**Boolean and integer data types**
+<p style="display: block;">
+  <img src="image_86.png" alt="image_86"/>
+</p>
+
+**floating-point number and complex number data types**
+<p style="display: block;">
+  <img src="image_87.png" alt="image_87"/>
+</p>
+
+### 6. Indexing, Slicing, and Assignment
+
+- Nparray supports indexing, slicing, and assignment operation similar to list.
+- Consider the following 1d vector Nparray below:
+- Accessing an element through index
+- Accessing a sub array through slicing
+```python
+a = np.arange(10)
+print(a[0])
+print(a[5:7])
+```
+
+- Accessing a sub array through slicing with step
+- Assigning new values to an element with a given index
+- Assigning new values to several elements with slicing
+```python
+print(a[1:6:2])
+a[0] = 10
+a[5:] = -1
+```
+
 
 ## Lecture 11 - Pandas
 
