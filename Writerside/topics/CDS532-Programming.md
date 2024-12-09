@@ -15,7 +15,7 @@ a blank answer or a wrong answer.
 
 ## Lecture 1 - Introduction to Data Science
 
-### 1. Simpified Computer Architecture
+### 1. Simplified Computer Architecture
 
 <p style="display: block;">
   <img src="image_10.png" alt="image_10"/>
@@ -435,8 +435,434 @@ of the object.
 </tip>
 
 ## Lecture 6 - Sequences
+### 1. The String Data Type
+- A string is a sequence of characters enclosed within quotation marks (")
+  or apostrophes (').
+![image_60.png](image_60.png)
+
+<tip>We can access the individual characters in a string through indexing.</tip>
+
+```python
+greet = "Hello Bob"
+print(greet[0])
+# Output: H
+
+greet = "Hello Bob"
+print(greet[-1])
+# Output: b
+``` 
+### 2. slicing
+- Slicing is a way to extract a subsequence of a string.
+
+- The syntax for slicing is:
+```
+  <string>[<start>:<end>:<step>]
+```
+- Example:
+```python
+greet = "Hello Bob"
+
+print(greet[0:3])
+# Output: Hel
+
+print(greet[:5])
+# Output: Hello
+
+print(greet[5:])
+# Output: Bob
+
+print(greet[:])
+# Output: Hello Bob
+
+print(greet[::2])
+# Output: HloBb
+```
+### 3. String Operation
+#### 1. Concatenation
+- Concatenation operator (+) glues two strings together
+- The result is a new string
+```python
+concat_str1 = "spam" + "eggs"
+concat_str2 = "Spam" + "And" + "Eggs"
+
+print(concat_str1)
+# Output: spameggs
+print(concat_str2)
+# Output: SpamAndEggs
+```
+
+#### 2. Repetition
+- Repetition operator (*) builds up a string by multiple concatenations of a
+string with itself
+- The result is a new string
+```python
+repetition_str1 = 3 * "spam"
+repetition_str2 = "spam" * 5
+repetition_str3 = (3 * "spam") + ("eggs" * 5)
+print(repetition_str1)
+print(repetition_str2)
+print(repetition_str3)
+
+# Output: spamspamspam
+# Output: spamspamspamspamspam
+# Output: spamspamspameggseggseggseggseggs
+```
+
+#### 3. len() Function
+- The function len() will return the length of a string.
+```python
+str1_len = len("spam")
+print(str1_len)
+# Output: 4
+```
+
+#### 4. Iterating every character in a string
+- String is a sequence of characters, so its characters can be iterated with a
+  for loop
+```python
+for ch in "Spam!":
+    print(ch, end=" ")
+# Output: S p a m !
+```
+
+#### 5. Summary
+<p style="display: block;">
+  <img src="image_61.png" alt="image_61"/>
+</p>
+
+### 4. Simple String Processing - Examples
+```python
+# A program to print the abbreviation of a month, given its number
+def main():
+    # months is used as a lookup table
+    months = "JanFebMarAprMayJunJulAugSepOctNovDec"
+    n = int(input("Enter a month number (1-12): "))
+
+    # compute starting position of month n in months
+    pos = (n-1) * 3
+    
+    # Grab the appropriate slice from months
+    monthAbbrev = months[pos:pos+3]
+
+    # print the result
+    print ("The month abbreviation is", monthAbbrev + ".")
+
+main()
+
+# Input: 3
+# Output: The month abbreviation is Mar.
+```
+### 5. String Representation
+- The ord function returns the numeric (ordinal) code of a single character.
+```python
+numeric_code = ord("A")
+print(numeric_code)
+# Output: 65
+```
+- The chr function converts a numeric code to the corresponding character.
+```python
+character = chr(97)
+print(character)
+# Output: a
+```
+
+### 6. Conversion between String and Other Data Type
+<p style="display: block;">
+  <img src="image_62.png" alt="image_62"/>
+</p>
+
+### 7. String Methods
+<p style="display: block;">
+  <img src="image_63.png" alt="image_63"/>
+</p>
+<p style="display: block;">
+  <img src="image_64.png" alt="image_64"/>
+</p>
+
+<tip>It turns out that strings are really a special kind of sequence, 
+so string operations also apply to sequences!</tip>
+
+### 8. Lists as Sequences
+<tip>Strings are always sequences of characters, but lists can be sequences of 
+arbitrary values. <br/>
+Lists can have numbers, strings, or both!</tip>
+
+Example:
+```python
+# A program to print the month name, given it's number.
+# This version uses a list as a lookup table.
+def main():
+    # months is a list used as a lookup tableab
+    months = ["January", "February", "March", "April", "May", "June",
+              "July", "August", "September", "October", "November",
+              "December"]
+
+    n = int(input("Enter a month number (1-12): "))
+    
+    print ("The month abbreviation is", months[n-1] + ".")
+main()
+# Input: 3
+# Output: The month abbreviation is March.
+```
+
+<tip>List is mutable, meaning its 
+elements CAN be changed. </tip>
+<tip>Strings is immutable, meaning its 
+element CANNOT be changed</tip>
+
+### 9. append() Method
+- The append method adds a new element to the end of a list.
+```python
+squares = []
+for x in range(1,101):
+  squares.append(x*x)
+```
+
+### 10. String Formatting
+- To output the value of coins in the expected format, we can modify the
+  print statement as follows:
+```python
+print("The total value of your change is ${0:0.2f}".format(total))
+
+# ${0:0.2f} is a string format template
+# .format(total) is the function for 
+# specifying the expression(s) subjected to be printed
+```
+- The form of description is:
+```
+<index>:<format-specifier>
+```
+<tip>Index (start from 0) specific which 
+parameter of the format() should be
+insert into the slot. In this case, total.</tip>
+
+- format-specifier
+```
+<width>.<precision><type>
+```
+- Example:
+```python
+print("Hello {0} {1}, you may have won ${2}"
+ .format("Mr.", "Smith", 10000))
+print('This int, {0:5}, was placed in a field of width 5'
+.format(7))
+print('This int, {0:10}, was placed in a field of witdh 10'
+.format(10))
+print('This float, {0:10.5}, has width 10 and precision 5.'
+.format(3.1415926))
+print('This float, {0:10.5f}, is fixed at 5 decimal places.'
+.format(3.1415926))
+print("Compare {0} and {0:0.20}"
+.format(3.14))
+
+# Output:
+# Hello Mr. Smith, you may have won $10000
+# This int,     7, was placed in a field of width 5
+# This int,         10, was placed in a field of witdh 10
+# This float,    3.1416, has width 10 and precision 5.
+# This float,    3.14159, is fixed at 5 decimal places.
+# Compare 3.14 and 3.1400000000000001243
+```
+- numeric values are right-justified and strings are left-justified by default
+- Text justification can be explicitly specified by putting a symbol before the
+  width definition.
+```python
+print("left justification: [{0:<5}]".format("Hi!"))
+print("right justification: [{0:>5}]".format("Hi!"))
+print("centered: [{0:^5}]".format("Hi!"))
+
+# Output:
+print("left justification: [{0:<5}]".format("Hi!  "))
+print("right justification: [{0:>5}]".format("  Hi!"))
+print("centered: [{0:^5}]".format(" Hi! "))
+```
+### 11. Text files: Multi-Line Strings
+- A file is a sequence of data that is stored in secondary memory (disk drive). 
+- A file is a sequences of bytes that can represent any types of data, but the
+  easiest to work with are text. 
+- A text file can contain more than one line of text, each line is delimited by a
+  newline character  (\n)
+
+### 12. File processing
+- The process of opening a file involves associating a file on disk with an
+  object in memory. 
+- We can manipulate the file by manipulating the object to read data from a
+  file or write data to a file. 
+- When done with the file, it needs to be closed. Closing the file causes any
+  outstanding operations and other bookkeeping for the file to be completed. 
+- In some cases, not properly closing a file could result in data loss
+
+#### 1. Reading File - General Operation Flow
+<p style="display: block;">
+  <img src="image_65.png" alt="image_65"/>
+</p>
+
+#### 2. Writing File - General Operation Flow
+<p style="display: block;">
+  <img src="image_66.png" alt="image_66"/>
+</p>
+
+#### 3. working with file in Python
+<p style="display: block;">
+  <img src="image_67.png" alt="image_67"/>
+</p>
+
+<p style="display: block;">
+  <img src="image_68.png" alt="image_68"/>
+</p>
+
+<p style="display: block;">
+  <img src="image_69.png" alt="image_69"/>
+</p>
+
+<tip>
+不知道老师有没有说下面这个文件打开方式。这个方法会自动关闭文件，不用手动，更安全。
+</tip>
+
+```python
+# 使用 with 语句打开文件
+with open('example.txt', 'r') as file:
+    content = file.read()
+    print(content)
+```
 
 ## Lecture 7 - Data Collection
+
+### 1. Lists and Arrays
+- A list or array is a sequence of items where the entire sequence is referred
+  to by a single name (i.e. s) and individual items can be selected by indexing
+
+- Python lists are dynamic. They can grow and shrink on demand.
+- Python lists are also heterogeneous, a single list can hold arbitrary data
+  types.
+- Python lists are mutable sequences of arbitrary objects.
+<tip>string is a special version of list</tip>
+
+### 2. Lists vs String
+- Strings are always sequences of characters, but lists can be sequences of
+  arbitrary values.
+- Lists are mutable, meaning they can be changed. Strings cannot be
+  changed.
+
+### 3. List Operations
+<p style="display: block;">
+  <img src="image_70.png" alt="image_70"/>
+</p>
+
+#### 1. Membership
+- can be used to check if a certain value appears anywhere in a sequence.
+```python
+lst = [1,2,3,4]
+check_membership1 = 3 in lst
+check_membership2 = 5 in lst
+print(check_membership1)
+print(check_membership2)
+# Output: True, False
+```
+
+#### 2. append() Method
+- New value can be added at the end of a sequence through append().
+- Lists can be constructed one piece at a time using append().
+
+```python
+nums = []
+nums.append(10)
+nums.append(20)
+nums.append(30)
+nums.append(40)
+nums.append(50)
+print(nums)
+# Output: [10, 20, 30, 40, 50]
+```
+
+#### 3. del
+- Individual items or entire slices can be removed from a list using the del
+  operator.
+
+```python
+myList=[34, 26, 0, 10]
+print(myList)
+del myList[1]
+print(myList)
+del myList[1:3]
+print(myList)
+
+# Output: [34, 26, 0, 10]
+# Output: [34, 0, 10]
+# Output: [34]
+```
+
+#### 4. Extra List Operations
+<p style="display: block;">
+  <img src="image_71.png" alt="image_71"/>
+</p>
+
+### 4. Dictionary
+- A dictionary is a collection that allows us to look up a piece of information
+  (value) associated with an arbitrary key.
+- Its working principle is similar to a locker cabinet
+
+<p style="display: block;">
+  <img src="image_72.png" alt="image_72"/>
+</p>
+
+<p style="display: block;">
+  <img src="image_73.png" alt="image_73"/>
+</p>
+
+#### 1. Dictionary initialization
+```python
+# Create a dictionary
+score = {"Peter":"80", "John":"78", "Bill":"90"}
+print(score)
+# Output: {'Peter': '80', 'John': '78', 'Bill': '90'}
+```
+#### 2. Accessing element from dictionary
+```python
+score = {"Peter":"80", "John":"78", "Bill":"90"}
+print(score["Peter"])
+# Output: 80
+```
+
+#### 3. Modifying Values in a Dictionary
+```python
+score = {"Peter":"80", "John":"78", "Bill":"90"}
+score["Peter"] = "60"
+print(score)
+# Output: {'Peter': '60', 'John': '78', 'Bill': '90'}
+```
+
+#### 4. Dictionary Operations
+<p style="display: block;">
+  <img src="image_74.png" alt="image_74"/>
+</p>
+
+### 5. word frequency example
+```python
+def byFreq(pair):
+    return pair[1]
+
+def main():
+    fname = input("File to analyze: ")
+    text = open(fname,'r').read()
+    text = text.lower()
+    for ch in '!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~':
+        text = text.replace(ch, ' ')
+    words = text.split()
+
+    counts = {}
+    for w in words:
+        counts[w] = counts.get(w,0) + 1
+
+    items = list(counts.items())
+    items.sort()
+    items.sort(key=byFreq, reverse = True)
+
+    for word, count in items:
+        print("{0:<15}{1:>5}".format(word, count))
+
+main()
+```
 
 ## Lecture 8 - Function
 
