@@ -866,6 +866,15 @@ main()
 
 ## Lecture 8 - Function
 
+- A function is like a subprogram, a small program inside of a program
+- The basic idea – we write a sequence of statements and then give that
+  sequence a name. We can then execute this sequence at any time by
+  referring to the name. 
+- The part of the program that creates a function is called a function
+  definition. 
+- When the function is used in a program, we say the definition is called or
+  invoked.
+
 ### 1. Functions and Parameters
 <p style="display: block;">
   <img src="image_75.png" alt="image_75"/>
@@ -876,13 +885,15 @@ or arguments.
 ```
 <name>(<actual-parameters>)
 ```
-
+### **Four-step** process
 - When Python comes to a function call, it initiates a **four-step** process.
 1. The calling program suspends execution at the point of the call.
 2. The formal parameters of the function get assigned the values supplied
 by the actual parameters in the call. 
 3. The body of the function is executed. 
 4. Control returns to the point just after where the function was called
+
+<tip>IMPORTANT！！！</tip>
 
 ### 2. Functions That Return Values
 - One "gotcha" – all Python functions return a value, whether they contain a
@@ -904,6 +915,62 @@ corresponding actual parameter).
   <img src="image_76.png" alt="image_76"/>
 </p>
 <tip>这块是重点，Lecture 8 PPT上有完整的函数执行流程，这里就不全截图了。</tip>
+
+### 4. Call Stack
+- A call stack is a stack that stores information about the function currently
+being executed in a computer program. 
+- Although the call stack is important for the proper execution of any
+program, the details are normally hidden and automatic in high-level
+programming languages.
+
+#### 1. What is a Stack
+- A stack is a list that can only insert and delete element at the head 
+- Push: Inserts an element at the head 
+- Pop: Deletes (and returns) the element at the head
+![image_77.png](image_77.png)
+
+![image_78.png](image_78.png)
+
+![image_79.png](image_79.png)
+
+<tip>Lecture 8b PPT上有完整stack的演示，这里就不全截图了。</tip>
+<tip>Stack 就是记住这句 后进先出（LIFO，Last In First Out）</tip>
+
+#### 2. Recursion
+- **Objective:** Decompose a task into smaller sub-tasks. 
+  - At least one of the sub-tasks is a smaller case of the same task. 
+  - The smallest case of the same task (base case) has a non-recursive solution. 
+- **Recursive function:** a function that calls itself either directly or indirectly
+through another function. 
+- Recursion exploited the properties of the call stack such that the sub tasks
+are executed in Last In First Out (LIFO) order.
+
+<tip>Lecture 8b PPT上有完整递归的演示，这里就不全截图了。</tip>
+<tip>深入到底：递归函数不断调用自身，直到满足终止条件，深入到最深层。<br/>
+逐层返回：满足终止条件后，递归函数开始逐层返回，从最深层逐步回到最外层</tip>
+
+#### Recursion Example - Factorial
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+    
+    return n * factorial(n - 1)
+
+factorial(10)
+# Output: 3628800
+```
+
+#### Recursion Example - Fibonacci
+```python
+def fibonacci(n):
+    if (n == 0) or (n==1):
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+fibonacci(10)
+# Output: 55
+```
 
 ## Lecture 9 - Packaging
 
