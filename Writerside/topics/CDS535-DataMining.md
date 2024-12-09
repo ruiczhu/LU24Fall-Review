@@ -113,11 +113,11 @@ centroid
 - The basic algorithm is very simple
 ![image_5.png](image_5.png)
 
-##### 2. Two different K-means Clusterings
+#### 2. Two different K-means Clusterings
 - Optimal Clustering（最优聚类）
 - Sub-optimal Clustering（次优聚类）
 
-##### 3. Importance of Choosing Initial Centroids 
+#### 3. Importance of Choosing Initial Centroids 
 
 
 ### 4. Association Rule Discovery: Definition
@@ -130,13 +130,13 @@ items.
 #### 1. Association Analysis: Applications
 
 - Market-basket analysis 
-- Rules are used for sales promotion, shelf management, and inventory management
+  - Rules are used for sales promotion, shelf management, and inventory management
 
 - Telecommunication alarm diagnosis 
-- Rules are used to find combination of alarms that  occur together frequently in the same time period
+  - Rules are used to find combination of alarms that  occur together frequently in the same time period
 
 - Medical Informatics 
-- Rules are used to find combination of patient  symptoms and test results associated with certain  diseases
+  - Rules are used to find combination of patient  symptoms and test results associated with certain  diseases
 
 ## 4. Data Preprocessing
 

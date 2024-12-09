@@ -289,7 +289,150 @@ else:
 
 ## Lecture 4 - Number Computation
 
+### 1. Numeric Data Types
+- In mixed-typed expressions Python will convert ints to floats.
+- Sometimes we want to control the type conversion. This is called explicit
+  typing.
+![image_51.png](image_51.png)
+
+### 2. Type Conversions & Rounding
+![image_50.png](image_50.png)
+
+### 3. Type Conversions & Rounding - Example
+```python
+# change.py
+#   A program to calculate the value of some change in dollars
+def main():
+  print("Change Counter")
+  print()
+  print("Please enter the count of each coin type.")
+  quarters = int(input("Quarters: "))
+  dimes = int(input("Dimes: "))
+  nickels = int(input("Nickels: "))
+  pennies = int(input("Pennies: "))
+  total = quarters * .25 + dimes * .10 + nickels * .05 + pennies * .01
+  print()
+  print("The total value of your change is", total)
+```
+
+### 4. Using the math Library
+![image_52.png](image_52.png)
+- Example:
+```python
+import math  # Makes the math library available.
+def main():
+  print("This program finds the real solutions to a quadratic")
+  a, b, c = eval(input("Please enter the coefficients (a, b, c): "))
+  discRoot = math.sqrt(b * b - 4 * a * c)
+  root1 = (-b + discRoot) / (2 * a)
+  root2 = (-b - discRoot) / (2 * a)
+  print("The solutions are:", root1, root2 )
+main()
+```
+<p style="display: block;">
+  <img src="image_53.png" alt="image_53"/>
+</p>
+<p style="display: block;">
+  <img src="image_54.png" alt="image_54"/>
+</p>
+
+### 5. range Function
+- The range function generates a sequence of numbers.
+<p style="display: block;">
+  <img src="image_55.png" alt="image_55"/>
+</p>
+
+- factorial program example
+```python
+# Program to compute the factorial of a number
+# Illustrates for loop with an accumulator
+def main():
+  n = eval(input("Please enter a whole number: "))
+  fact = 1
+  for factor in range(n,1,-1): 
+    fact = fact * factor
+  print("The factorial of", n, "is", fact)
+main()
+```
+
+### 6. The Limits of Int
+- While there are an infinite number of integers, there is a finite range of
+  ints that can be represented.
+- This range depends on the number of bits a particular CPU uses to
+    represent an integer value.
+- ![image_56.png](image_56.png)
+
+### 7. Handling Large Numbers
+![image_57.png](image_57.png)
+- Floats are approximations
+- Floats allow us to represent a larger range of values, but with fixed
+precision. 
+- Python has a solution, expanding ints!
+- Python ints are not a fixed size and expand to handle whatever value it
+holds. 
+- Newer versions of Python automatically convert your ints to expanded form
+when they grow so large as to overflow. 
+- We get indefinitely large values (e.g. 100!) at the cost of speed and
+memory.
+
 ## Lecture 5 - Object
+
+### 1. What is Object-Oriented Programming
+- Basic idea – view a complex system as the interaction of simpler objects
+which are representations of real-world entities.
+- An object is a sort of active data type that combines data and operations.
+  - Field (The properties of the object, i.e. Data)
+  - Method (The actions of the object, i.e. Operation)
+- Objects interact by sending each other messages (i.e. calling methods just
+like functions).
+<p style="display: block;">
+  <img src="image_58.png" alt="image_58"/>
+</p>
+
+### 2. Object-Oriented Programming
+- Programmers define and
+implement the fields and
+methods of the object as Class
+template in the source code they
+wrote.
+<p style="display: block;">
+  <img src="image_59.png" alt="image_59"/>
+</p>
+
+- Example 2D Point Class:
+```python
+class Point:
+  def __init__(self):
+    self.X = 0
+    self.Y = 0
+  def setX(self, x1):
+    self.X = x1
+  def setY(self, y1):
+    self.Y = y1
+  def getX(self):
+    return self.X
+  def getY(self):
+    return self.Y
+```
+<tip>
+    The __init__ method is a special method that is called when an object is
+        created. It initializes the object’s data.
+</tip>
+<tip>
+    The methods of an object instance can access and update the fields by using the self keyword.
+</tip>
+
+```python
+point1 = Point()
+point1.setX(1.0)
+point1.setY(2.0)
+print("The X coordinate of Point 1:", point1.getX()) 
+print("The Y coordinate of Point 1:", point1.getY())
+```
+<tip>
+A point object is created by call the constructor function 
+of the object.
+</tip>
 
 ## Lecture 6 - Sequences
 
