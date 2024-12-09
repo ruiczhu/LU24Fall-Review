@@ -1202,9 +1202,457 @@ a[0] = 10
 a[5:] = -1
 ```
 
+- Consider the following 2d matrix Nparray:
+- Accessing an element through indexing 
+- Assign new value to an element through indexing in a 2d matrix Nparray:
+```python
+b = np.array([[3,4,5], [6,7,8]])
+print(b[1,2])
+```
+![image_88.png](image_88.png)
+
+```python
+print(b[0,1:3])
+```
+![image_89.png](image_89.png)
+
+- Consider the following 3d tensor Nparray:
+- Accessing an element through indexing in a 3d tensor Nparray
+```python
+c = np.array([[[10, 11, 12], [13, 14, 15]], [[16, 17, 18], [19, 
+20, 21]]])
+print(c[0, 0, 2])
+print(c[:, 1, 1:2])
+```
+<p style="display: block;">
+  <img src="image_90.png" alt="image_90"/>
+</p>
+<p style="display: block;">
+  <img src="image_91.png" alt="image_91"/>
+</p>
+
+### 7. Copies and Views
+- Slicing operation creates a view on the original array, which is an alternative
+way of accessing array data. 
+- The original array is NOT duplicated in memory!
+
+### 8. Arithmetic Operations and Functions
+- When a simple comparison and logical operation is performed on an NumPy
+  array, the operation is performed on each element directly:
+```python
+import numpy as np
+a = np.array([1, 2, 3, 4])
+b = np.array([1, 2, 2, 1])
+print(a == b)
+print(a > 2)
+
+# Output: [ True  True False False]
+# Output: [False False  True  True]
+```
+
+```python
+import numpy as np
+a = np.array([1, 1, 0, 0], dtype=bool)
+b = np.array([1, 0, 1, 0], dtype=bool)
+print(np.logical_or(a, b))
+print(np.logical_and(a, b))
+
+# Output: [ True  True  True False]
+# Output: [ True False False False]
+```
+
+### 9. Advanced Indexing Techniques
+- NumPy array supports extracting sub array with a list of indices.
+
+```python
+import numpy as np
+a = np.arange(7, 0, -1)
+selector = np.array([1, 3, 5])
+print(a)
+print(selector)
+print(a[selector])
+
+# Output: [7 6 5 4 3 2 1]
+# Output: [1 3 5]
+# Output: [6 4 2]
+```
+- NumPy array supports extracting sub array with a Boolean mask.
+```python
+import numpy as np
+a = np.arange(8)
+selector = (a % 2) == 0
+print(a)
+print(selector)
+print(a[selector])
+
+# Output: [0 1 2 3 4 5 6 7]
+# Output: [ True False  True False  True False  True False]
+# Output: [0 2 4 6]
+```
+<p style="display: block;">
+  <img src="image_92.png" alt="image_92"/>
+</p>
+
+### 10. Sorting
+- When an NumPy array with a dimension > 2 is sorted, an axis has to be
+  specified as the direction (along the row/column) for sorting
+- For example:
+```python
+a = np.array([[1, 20, 3], [40, 5, 60]])
+```
+![image_93.png](image_93.png)
+
+- Sorting along the column (along the direction of axis 0)
+```python
+a.sort(axis=0)
+```
+<p style="display: block;">
+  <img src="image_94.png" alt="image_94"/>
+</p>
+
+- Sorting the row (along the direction of axis 1)
+```python
+a.sort(axis=1)
+```
+<p style="display: block;">
+  <img src="image_95.png" alt="image_95"/>
+</p>
+
+### 11. Aggregations
+
+- Summary statistics of each column or row can be easily computed with
+aggregation functions 
+- Similar to sort(), an axis has to be specified as the direction (along the
+row/column) for aggregation operation 
+- Consider the following 2d matrix Nparray:
+```python
+a = np.array([[1, 2], [4, 3]])
+```
+![image_96.png](image_96.png)
+
+- For each row (along the direction of axis = 1), calculating the sum of
+element:
+```python
+x.sum(axis = 1)
+```
+<p style="display: block;">
+  <img src="image_97.png" alt="image_97"/>
+</p>
+
+- For each column (along the direction of axis = 0), calculating the sum of
+element:
+```python
+x.sum(axis = 0)
+```
+<p style="display: block;">
+  <img src="image_98.png" alt="image_98"/>
+</p>
 
 ## Lecture 11 - Pandas
+### 1. What is Pandas
+- Python language provides libraries for faster and more convenient handling
+  of data 
+- Pandas (stands for "Python Data Analysis Library") is one of the most
+  commonly used tools for data analysis and manipulation
 
+### 2. Data in Pandas
+- In Panda, there are 3 types of object mainly used to represent data:
+1. Series
+   - 1 dimensional
+   - Like a 1-D list object or a 1-D numpy array 
+2. DataFrame
+   - 2 dimensional
+   - Table-like data
+3. Panel
+   - 3 or more dimensional
+
+### 3. Series
+- list, tuple, dictionary, numpy array can be directly turn into Series
+- Series uses "index" to specify each element 
+- By default, integer is used as the index of a Series object
+
+```python
+import numpy as np
+import pandas
+list_1 = [1, 3, 4, 5, 6, 7]
+series_2 = pandas.Series(list_1)
+dict_1 = {'Day 1':1, 'Day 2':3, 'Day 3':4, 'Day 4':5, 
+'Day 5':6, 'Day 6':7}
+series_3 = pandas.Series(dict_1)
+print(series_2)
+print(series_3)
+```
+
+### 4. DataFrame
+- pandas.DataFrame() represents two-dimensional tabular data 
+- It consists of rows and columns 
+- It can be viewed as containing multiple Series (columns)
+<p style="display: block;">
+  <img src="image_99.png" alt="image_99"/>
+</p>
+
+- Similar to Series, DataFrame can be created from list, tuple, dictionary,
+  numpy array
+- For DataFrame, we use "index" to specify the labels of rows and "columns"
+  to specify the labels of columns
+```python
+nparray1 = np.array([[4, 4, 5, 0], 
+                     [5, 3, 0, 4], 
+                     [2, 5, 2, 3]])
+df2 = pandas.DataFrame(nparray1, 
+         index=['Day 1', 'Day 2', 'Day 3'], 
+         columns=['Item 1', 'Item 2', 'Item 3', 'Item 4'])
+```
+- The labels of rows can be retrieved by:
+- The labels of columes can be retrieved by:
+```python
+df.index
+df.columns
+```
+
+### 5. Selecting Data with Indexing
+- In a Series, we use **index** to specify a data element:
+<p style="display: block;">
+  <img src="image_100.png" alt="image_100"/>
+</p>
+<p style="display: block;">
+  <img src="image_101.png" alt="image_101"/>
+</p>
+
+- In a DataFrame, use **column** to return a column as a Series:
+<p style="display: block;">
+  <img src="image_102.png" alt="image_102"/>
+</p>
+
+-  Similarly, we can use **column index** to specify a data element:
+<p style="display: block;">
+  <img src="image_104.png" alt="image_104"/>
+</p>
+
+- We can also use **loc[]** to specify a data element:
+<p style="display: block;">
+  <img src="image_103.png" alt="image_103"/>
+</p>
+
+### 6. Selecting Data with Slicing
+- pandas also allow slicing operation using colon ":"
+<p style="display: block;">
+  <img src="image_105.png" alt="image_105"/>
+</p>
+
+- Notably, for DataFrame object, slicing only refers to rows but not columns:
+<p style="display: block;">
+  <img src="image_106.png" alt="image_106"/>
+</p>
+
+### 7. Selecting Data with Condition Query
+- Pandas support selecting specific element(s) through defining certain
+condition(s):
+- For example, the elements in a series that are equal to 5 can be selected by:
+```python
+s = pandas.Series([1, 4, 5, 7, 8])
+print(s[s == 5]) 
+
+# Output: 2    5
+```
+<p style="display: block;">
+  <img src="image_107.png" alt="image_107"/>
+</p>
+
+- For DataFrame, you can query specific row(s) by adding condition(s) to the
+  columns:
+```python
+nparray = np.array([[4, 4, 5, 0], 
+                    [5, 3, 0, 4], 
+                    [2, 5, 2, 3]])
+df = pandas.DataFrame(nparray, 
+         index=['Day 1', 'Day 2', 'Day 3'],
+         columns=['Item 1', 'Item 2', 'Item 3', 'Item 4'])
+print(df[df['Item 2'] > 3])
+```
+
+- Multiple conditions can be joined using characters "&" (and) or "|" (or):
+```python
+nparray = np.array([[4, 4, 5, 0], 
+                    [5, 3, 0, 4], 
+                    [2, 5, 2, 3]])
+df = pandas.DataFrame(nparray, 
+         index=['Day 1', 'Day 2', 'Day 3'], 
+         columns=['Item 1', 'Item 2', 'Item 3', 'Item 4'])
+print(df[(df['Item 2'] > 3) & (df['Item 4'] == 0)])
+print(df[(df['Item 2'] > 3) | (df['Item 1'] == 5)])
+```
+<tip>Each condition should be placed inside a pair of brackets ( and )</tip>
+
+### 8. Working with Missing Data
+- One advantage of pandas is that it allows empty cells (NA values *) and
+  provides relevant operations
+```python
+raw_data = [[1, 2, None, 4], 
+            [2, 3, 4, 5], 
+            [3, None, 5, 6]]
+df = pandas.DataFrame(raw_data, 
+           index=['Row 1', 'Row 2', 'Row 3'],
+           columns=['Col 1', 'Col 2', 'Col 3', 'Col 4'])
+print(df)
+```
+<tip>By default, "None", "np.nan" and "NaN" "NaT" in 
+pandas are considered as NA values</tip>
+
+- Functions **isna()** and **notna()** can be used to determine which value(s)
+  stored in a series or a dataframe is/are missing value
+
+- **dropna()** function can be used to removes the rows containing NA values
+  (or elements with NA value in Series) and return the DataFrame (or Series)
+  after removal
+
+- By specifying axis="columns", dropna() can remove the column
+  containing NA values in a given DataFrame
+```python
+df.dropna(axis="columns")
+```
+<p style="display: block;">
+  <img src="image_108.png" alt="image_108"/>
+</p>
+
+- fillna() function can be used to fill NA values with a given value
+  df.fillna(0)
+<p style="display: block;">
+  <img src="image_109.png" alt="image_109"/>
+</p>
+
+- A deliciated value can even be specified for replacing the missing values of
+  each column
+
+```python
+df.fillna({'Col 1': 100, 'Col 2': 200, 'Col 3': 300, 'Col 4': 400})
+```
+
+<p style="display: block;">
+  <img src="image_110.png" alt="image_110"/>
+</p>
+
+### 9. Adding new data
+- series
+```python
+import pandas
+s = pandas.Series([1, 2, 3])
+print(s)
+s[3] = 0
+print(s)
+s_2 = pandas.Series({'a':1, 'b':2, 'c':3})
+print(s_2)
+s_2['d'] = 9
+print(s_2)
+```
+
+- DataFrame
+```python
+import pandas
+nparray = np.array([[4, 4, 5, 0], 
+                    [5, 3, 0, 4], 
+                    [2, 5, 2, 3]])
+df = pandas.DataFrame(nparray, 
+         index=['Day 1', 'Day 2', 'Day 3'], 
+         columns=['Item 1', 'Item 2', 'Item 3', 'Item 4'])
+print(df)
+df['Item 5'] = [9, 9, 9]
+print(df)
+```
+
+### 10. Joining different series
+- Function concat() can be used to join another series at the end of a given
+series
+```python
+  s1 = pandas.Series([1, 2, 3])
+  s2 = pandas.Series([9, 0])
+  s3 = pandas.concat([s1, s2])
+```
+<note>Note: concat() function will not change 
+the original series. Therefore, remember to 
+assign the return value as a new variable</note>
+
+- If the concat() function is called directly, the indexes of new data inserted
+  into the series will not be updated
+<p style="display: block;">
+  <img src="image_111.png" alt="image_111"/>
+</p>
+
+### 11. Joining different dataframes
+- Function concat() can be used to join another dataframe at the end of a
+given dataframe
+```python
+a = np.array([[0, 1, 2, 3],
+              [4, 5, 6, 7],
+              [8, 9, 10, 11]])
+b = np.array([[0, 0, 0, 0],
+              [9, 9, 9, 9]])
+df1 = pandas.DataFrame(a, index=['Row 1', 'Row 2', 'Row 3'],
+         columns=['Col 1', 'Col 2', 'Col 3', 'Col 4'])
+df2 = pandas.DataFrame(b, index=['Row 1', 'Row 2'] ,
+         columns=['Col 1', 'Col 2', 'Col 3', 'Col 4'])
+df3 = pandas.concat([df1, df2])
+```
+<note>Note: concat() function will not 
+change the original dataframe. 
+Therefore, remember to assign the 
+return value as a new variable</note>
+
+<p style="display: block;">
+  <img src="image_112.png" alt="image_112"/>
+</p>
+
+- To automatically adjust the indexes, set the ignore_index attribute to
+  True (default is False) as demonstrated below
+```python
+s3 = pandas.concat([s1, s2], ignore_index=True)
+df3 = pandas.concat([df1, df2], ignore_index=True)
+```
+
+<p style="display: block;">
+  <img src="image_113.png" alt="image_113"/>
+</p>
+
+### 12. Removing element from series
+- drop() function can be used to remove specific element(s) from the Series
+```python
+import pandas
+s = pandas.Series([1, 2, 3, 4, 5])
+s1 = s.drop(index=[0, 1, 3])
+print(s)
+print(s1)
+```
+
+### 13. Removing row or column from dataframe
+- drop() function can be used to remove rows or columns from a dataframe.
+```python
+import pandas
+a = np.array([[4, 4, 5, 0], 
+[5, 3, 0, 4], 
+[2, 5, 2, 3]])
+df = pandas.DataFrame(a, index=['Day 1','Day 2','Day 3'], 
+columns=['Item 1', 'Item 2', 'Item 3', 'Item 4'])
+df1 = df.drop(index=['Day 2'])
+df2 = df.drop(columns=['Item 1', 'Item 3'])
+print(df1)
+print(df2)
+```
+
+### 14. Renaming index of a series/dataframe
+- rename() function is to modify the name of column or index (row) of the
+  dataFrame or series
+- To modify the name of an index in a series or dataframe
+- To modify the name of a column in a dataframe
+```
+<target>.rename(index={'old_name':'new_name'})
+<target>.rename(column={'old_name':'new_name'})
+```
+<note>
+Note: rename() function will not change the original series. 
+Therefore, remember to assign the return value as a new variable
+</note>
+
+### 5. Panel
 
 ## Python Syntax Reference Sheet
 ![image_21.png](image_21.png)
