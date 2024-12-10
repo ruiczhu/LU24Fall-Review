@@ -93,11 +93,9 @@
 ## 3. Predictive Modeling
 <note>本章具体内容见以下链接</note>
 
-[](#8-classification)
-
-
 ### 1. predictive modeling: classification
 - Find a model	for class attribute as a function of the values of other attributes
+[](#7-classification)
 
 ### 2. predictive modeling: regression
 - Predict a value of a given continuous valued variable based on the values of other variables, assuming a linear or nonlinear model of dependency. 
@@ -128,9 +126,61 @@ centroid
 ### 4. Association Rule Discovery: Definition
 - Given a set of records each of which contain
 some number of items from a given collection
-– Produce dependency rules which will predict
+- Produce dependency rules which will predict
 occurrence of an item based on occurrences of other
 items.
+
+1. Itemset
+   - A collection of one or more items
+
+   - k-itemset
+     - An itemset that contains k items
+
+2. Support count (σ)
+   - Frequency of occurrence of an itemset
+
+3. Support
+   - Fraction of transactions that contain an itemset
+
+4. Frequent Itemset
+   - An itemset whose support is greater than or equal to a minsup threshold
+
+5. Association Rule and Rule evaluation matrix
+
+<p style="display: block;">
+  <img src="image_139.png" alt="image_139"/>
+</p>
+
+<p style="display: block;">
+  <img src="image_140.png" alt="image_140"/>
+</p>
+
+<p style="display: block;">
+  <img src="image_141.png" alt="image_141"/>
+</p>
+
+- Given d items, there are 2d possible candidate itemsets
+<p style="display: block;">
+  <img src="image_142.png" alt="image_142"/>
+</p>
+
+1. Reduce the number of candidates (M)
+   - Complete search: M=2d
+   - Use pruning techniques to reduce M
+   - Apriori principle:
+     - If an itemset is frequent, then all of its subsets must also be frequent
+
+   - Apriori principle holds due to the following property of the support measure:
+     - Support of an itemset never exceeds the support of its subsets
+     - This is known as the anti-monotone property of support
+<note>具体例子与步骤见week5 ppt 🫠 哥们写到这已经快死了</note>
+
+2. Reduce the number of transactions (N)
+   - Reduce size of N as the size of itemset increases
+3. Reduce the number of comparisons (NM)
+   - Use efficient data structures to store the candidates or transactions
+   - No need to match every candidate against every transaction
+
 
 #### 1. Association Analysis: Applications
 
@@ -143,114 +193,7 @@ items.
 - Medical Informatics 
   - Rules are used to find combination of patient  symptoms and test results associated with certain  diseases
 
-## 4. Data Preprocessing
-
-### 1. Outliers
-### 2. the Missing Values
-### 3. Duplicate Data
-
-<note>本章具体内容见以下链接</note>
-
-[](#8-data-quality)
-
-[](#9-data-preprocessing)
-
-## 5. Decision Trees
-
-<note>本章具体内容见以下链接</note>
-
-[](#1-decision-tree-algorithms)
-
-### 1. Test Condition for Nominal Attributes
-- Multi-way split:
-- Use as many partitions as distinct values.
-
-- Binary split:
-- Divides values into two subsets
-
-![image_6.png](image_6.png)
-
-### 2. Test Condition for Ordinal Attributes
-- Multi-way split:
-- Use as many partitions as distinct values
-
-- Binary split:
-- Divides values into two subsets
-- Preserve order property among attribute values
-
-![image_7.png](image_7.png)
-
-
-### 3. Test Condition for Continuous Attributes
-![image_8.png](image_8.png)
-
-## 6. Model Evaluation
-
-### 1. Metrics for Performance Evaluation
-<tip>IMPORTANT!!!</tip>
-
-![image_9.png](image_9.png)
-
-### Confusion Matrix 混淆矩阵
-|                 | Predicted Positive  | Predicted Negative  |
-|-----------------|---------------------|---------------------|
-| Actual Positive | True Positive (TP)  | False Negative (FN) |
-| Actual Negative | False Positive (FP) | True Negative (TN)  |
-
-#### 1. Accuracy 准确率
-Accuracy表示分类器正确分类的样本比例。
-
-$
-\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
-$
-
-#### 2. Precision 精确率
-Precision表示被预测为正类的样本中实际为正类的比例。
-
-$
-\text{Precision} = \frac{TP}{TP + FP}
-$
-
-#### 3. Recall (Sensitivity) 召回率（灵敏度）
-Recall表示实际为正类的样本中被正确预测为正类的比例。
-
-$
-\text{Recall} = \frac{TP}{TP + FN}
-$
-
-#### 4. F-measure (F1-score)
-F-measure是Precision和Recall的调和平均值。
-
-$
-\text{F-measure} = 2 \times\frac{ \text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
-$
-
-#### 5. Specificity 特异性
-Specificity表示实际为负类的样本中被正确预测为负类的比例。
-
-$
-\text{Specificity} = \frac{TN}{TN + FP}
-$
-
-#### 6. Sensitivity (Recall) 灵敏度（召回率）
-Sensitivity与Recall相同，表示实际为正类的样本中被正确预测为正类的比例。
-
-$
-\text{Sensitivity} = \frac{TP}{TP + FN}
-$
-
-#### 7. False Positive Rate (FPR) 假阳性率
-FPR表示实际为负类的样本中被错误预测为正类的比例。
-
-$
-\text{False Positive Rate} = \frac{FP}{TN + FP}
-$
-
-### 2. Limitation of Accuracy
-
-### 3. Computing Cost of Classification
-
-## 7. Data
+## 4. Data
 - **Data:** Collection of data objects and their attributes
 - **Attribute Values:** Attribute values are numbers or symbols assigned
   to an attribute
@@ -258,7 +201,7 @@ $
     - Same attribute can be mapped to different attribute
       values
     - Different attributes can be mapped to the same set of
-      values 
+      values
 
 ### 1. Types of Attributes
 
@@ -371,62 +314,62 @@ $
       - Information is not collected
       - Attributes may not be applicable to all cases
     -  Handling missing values
-        - Eliminate data objects or variables
-        - Estimate missing values
-        - Ignore the missing value during analysis
+      - Eliminate data objects or variables
+      - Estimate missing values
+      - Ignore the missing value during analysis
   - Duplicate data
     - Data set may include data objects that are
       duplicates, or almost duplicates of one another
 
 ### 9. Data Preprocessing
 #### 1. Aggregation
-  - Combining two or more attributes (or objects) into a single
-    attribute (or object)
-  - Purpose
-    - Data reduction - reduce the number of attributes or objects
-    - Change of scale
-      - Cities aggregated into regions, states, countries, etc.
-      - Days aggregated into weeks, months, or years
-    - More “stable” data - aggregated data tends to have less variability
-#### 2. Sampling 
-  - Sampling is the main technique employed for data
-    reduction.
-    - It is often used for both the preliminary investigation of
-      the data and the final data analysis.
-  - Statisticians often sample because obtaining the
-      entire set of data of interest is too expensive or
-      time consuming.
-  - Sampling is typically used in data mining because
-      processing the entire set of data of interest is too
-      expensive or time consuming.
-  - The **key principle** for effective sampling is the
-    following:
-    - Using a sample will work almost as well as using the
+- Combining two or more attributes (or objects) into a single
+  attribute (or object)
+- Purpose
+  - Data reduction - reduce the number of attributes or objects
+  - Change of scale
+    - Cities aggregated into regions, states, countries, etc.
+    - Days aggregated into weeks, months, or years
+  - More “stable” data - aggregated data tends to have less variability
+#### 2. Sampling
+- Sampling is the main technique employed for data
+  reduction.
+  - It is often used for both the preliminary investigation of
+    the data and the final data analysis.
+- Statisticians often sample because obtaining the
+  entire set of data of interest is too expensive or
+  time consuming.
+- Sampling is typically used in data mining because
+  processing the entire set of data of interest is too
+  expensive or time consuming.
+- The **key principle** for effective sampling is the
+  following:
+  - Using a sample will work almost as well as using the
     entire data set, if the sample is representative
-    - A sample is representative if it has approximately the
+  - A sample is representative if it has approximately the
     same properties (of interest) as the original set of data
 
-    - **Simple Random Sampling**
-    - There is an equal probability of selecting any particular item.
+  - **Simple Random Sampling**
+  - There is an equal probability of selecting any particular item.
 
-      - **Sampling without replacement**
-      - As each item is selected, it is removed from the population.
+    - **Sampling without replacement**
+    - As each item is selected, it is removed from the population.
 
-      - **Sampling with replacement**
-      - Objects are not removed from the population as they are selected for the sample.
-      - In sampling with replacement, the same object can be picked up more than once.
+    - **Sampling with replacement**
+    - Objects are not removed from the population as they are selected for the sample.
+    - In sampling with replacement, the same object can be picked up more than once.
 
-    - **Stratified sampling**
-    - Split the data into several partitions; then draw random samples from each partition.
+  - **Stratified sampling**
+  - Split the data into several partitions; then draw random samples from each partition.
 
 
-#### 3. Discretization 
+#### 3. Discretization
 - Discretization is the process of converting a
-continuous attribute into an ordinal attribute
+  continuous attribute into an ordinal attribute
   - A potentially infinite number of values are mapped into
-  a small number of categories
+    a small number of categories
   - Discretization is used in both unsupervised and
-  supervised settings
+    supervised settings
 - Unsupervised Discretization
   - Equal interval width (distance) partitioning
   - Equal-frequency (frequency) partitioning
@@ -434,14 +377,14 @@ continuous attribute into an ordinal attribute
 - Supervised Discretization
   - Discretization is based on class labels
   - The goal is to find partitions that minimize the
-  entropy (or maximize the purity) of the classes in
-  each partition
+    entropy (or maximize the purity) of the classes in
+    each partition
 
 #### 4. Binarization
 - Binarization maps a continuous or categorical
   attribute into one or more binary variables
 
-#### 5. Attribute Transformation 
+#### 5. Attribute Transformation
 - An attribute transform is a function that maps the
   entire set of values of a given attribute to a new
   set of replacement values such that each old
@@ -450,60 +393,60 @@ continuous attribute into an ordinal attribute
 - Simple Functions
 
   - Power Function (幂函数):
-  $x^k$
+    $x^k$
   - Logarithmic Function (对数函数):
-  $log(x)$
+    $log(x)$
   - Exponential Function (指数函数):
-  $ e^x $
+    $ e^x $
   - Absolute Value Function (绝对值函数):
-  $|x|$
+    $|x|$
 
 - Normalization
   - Refers to various techniques to adjust to
-  differences among attributes in terms of frequency
-  of occurrence, mean, variance, range
+    differences among attributes in terms of frequency
+    of occurrence, mean, variance, range
   - Take out unwanted, common signal, e.g.,
-  seasonality
+    seasonality
 - In statistics, standardization refers to subtracting off
-the means and dividing by the standard deviation
+  the means and dividing by the standard deviation
 
-#### 5. Dimensionality Reduction 
+#### 5. Dimensionality Reduction
 
 - Curse of Dimensionality
   - Many types of data analysis become significantly harder as
     the dimensionality of the data increases
   - When dimensionality increases, data becomes increasingly
-  sparse in the space that it occupies
+    sparse in the space that it occupies
   - Definitions of density and distance between points, which
-  are critical for clustering and outlier detection, become less
-  meaningful
+    are critical for clustering and outlier detection, become less
+    meaningful
 
 - Purpose of Dimensionality Reduction:
   - Avoid curse of dimensionality
   - Reduce amount of time and memory required by data
-  mining algorithms
+    mining algorithms
   - Allow data to be more easily visualized
   - May help to eliminate irrelevant features or reduce
-  noise
+    noise
 - Techniques
   - Principal Components Analysis (PCA)
   - Singular Value Decomposition
   - Others: supervised and non-linear techniques
 
-#### 6. Feature subset selection 
-- Another way to reduce dimensionality of data 
-- Redundant features 
+#### 6. Feature subset selection
+- Another way to reduce dimensionality of data
+- Redundant features
   - Duplicate much or all of the information contained in
-  one or more other attributes 
+    one or more other attributes
   - Example: purchase price of a product and the amount
-  of sales tax paid 
-- Irrelevant features 
+    of sales tax paid
+- Irrelevant features
   - Contain no information that is useful for the data
-  mining task at hand 
+    mining task at hand
   - Example: students' ID is often irrelevant to the task of
-  predicting students' GPA 
+    predicting students' GPA
 - Many techniques developed, especially for
-classification
+  classification
 
 #### 7. Feature creation
 - Create new attributes that can capture the
@@ -514,7 +457,157 @@ classification
   - Feature construction
   - Mapping data to new space
 
-## 8. Classification
+## 5. Decision Trees
+
+<note>本章具体内容见以下链接</note>
+
+[](#1-decision-tree-algorithms)
+
+## 6. Model Evaluation
+
+### 1. Metrics for Performance Evaluation
+<tip>IMPORTANT!!!</tip>
+
+![image_9.png](image_9.png)
+
+### Confusion Matrix 混淆矩阵
+|                 | Predicted Positive  | Predicted Negative  |
+|-----------------|---------------------|---------------------|
+| Actual Positive | True Positive (TP)  | False Negative (FN) |
+| Actual Negative | False Positive (FP) | True Negative (TN)  |
+
+#### 1. Accuracy 准确率
+Accuracy表示分类器正确分类的样本比例。
+
+$
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+$
+
+#### 2. Precision 精确率
+Precision表示被预测为正类的样本中实际为正类的比例。
+
+$
+\text{Precision} = \frac{TP}{TP + FP}
+$
+
+#### 3. Recall (Sensitivity) 召回率（灵敏度）
+Recall表示实际为正类的样本中被正确预测为正类的比例。
+
+$
+\text{Recall} = \frac{TP}{TP + FN}
+$
+
+#### 4. F-measure (F1-score)
+F-measure是Precision和Recall的调和平均值。
+
+$
+\text{F-measure} = 2 \times\frac{ \text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+$
+
+#### 5. Specificity 特异性
+Specificity表示实际为负类的样本中被正确预测为负类的比例。
+
+$
+\text{Specificity} = \frac{TN}{TN + FP}
+$
+
+#### 6. False Positive Rate (FPR) 假阳性率
+FPR表示实际为负类的样本中被错误预测为正类的比例。
+
+$
+\text{False Positive Rate} = \frac{FP}{TN + FP}
+$
+
+### 2. Limitation of Accuracy
+
+- Consider a 2-class problem
+  - Number of Class 0 examples = 9990
+  - Number of Class 1 examples = 10
+-  If model predicts everything to be class 0,
+accuracy is 9990/10000 = 99.9 %
+  - Accuracy is misleading because model does
+  not detect any class 1 example
+
+### 3. Computing Cost of Classification
+Cost Matrix
+<p style="display: block;">
+  <img src="image_133.png" alt="image_133"/>
+</p>
+
+<p style="display: block;">
+  <img src="image_135.png" alt="image_135"/>
+</p>
+
+<p style="display: block;">
+  <img src="image_134.png" alt="image_134"/>
+</p>
+
+<p style="display: block;">
+  <img src="image_136.png" alt="image_136"/>
+</p>
+
+### 4. Methods for Performance Evaluation
+Performance of a model may depend on other
+factors besides the learning algorithm:
+- Class distribution
+- Cost of misclassification
+- Size of training and test sets
+
+### 5. Learning Curve
+- Learning curve shows
+  how accuracy changes
+  with varying sample size
+- Requires a sampling
+  schedule for creating
+  learning curve
+- Effect of small sample
+  size:
+  - Bias in the estimate
+  - Variance of estimate
+
+### 6. Methods of Estimation
+- Holdout
+  - Reserve k% for training and (100-k)% for testing
+- Random subsampling
+  - Repeated holdout
+- Cross validation
+  - Partition data into k disjoint subsets
+  - k-fold: train on k-1 partitions, test on the remaining one
+  - Leave-one-out: k=n
+- Stratified (分層) sampling
+  - oversampling vs undersampling
+- Bootstrap
+  - Sampling with replacement
+
+#### Variations on Cross-validation
+- Repeated cross-validation
+  - Perform cross-validation a number of times
+  - Gives an estimate of the variance of the
+  generalization error
+- Stratified cross-validation
+  - Guarantee the same percentage of class
+  labels in training and test
+  - Important when classes are imbalanced and
+  the sample is small
+- Use nested cross-validation approach for model
+  selection and evaluation
+
+### 7. Methods for Model Comparison
+ROC (Receiver Operating Characteristic) Curve
+
+- ROC curve plots TPR (on the y-axis) against FPR
+(on the x-axis)
+  - TPR (TP rate) = TP/(TP+FN); positive hits
+  - FPR (FP rate)= FP/(FP + TN); false alarms
+<p style="display: block;">
+  <img src="image_137.png" alt="image_137"/>
+</p>
+<p style="display: block;">
+  <img src="image_138.png" alt="image_138"/>
+</p>
+<note>AUC（曲线下面积）用于评估模型性能。AUC值在0到1之间，值越大表示模型性能越好。</note>
+
+## 7. Classification
 
 - Goal: previously unseen records should be
   assigned a class as accurately as possible.
@@ -846,11 +939,23 @@ unseen records
 Need ways for estimating generalization errors
 </note>
 
-
-
 #### 2. Missing Values
 
+- Missing values affect decision tree construction in
+three different ways:
+  - Affects how impurity measures are computed
+  - Affects how to distribute instance with missing
+  value to child nodes
+  - Affects how a test instance with missing value
+  is classified
+  
+<p style="display: block;">
+  <img src="image_132.png" alt="image_132"/>
+</p>
+
 #### 3.  Model Evaluation/Costs of Classification
+
+[](#6-model-evaluation)
 
 ### 10. Model selection
 - Performed during model building
@@ -867,3 +972,64 @@ complex (to avoid overfitting)
     - Drawback:
       - Less data available for training
   - Incorporating Model Complexity
+    - Rationale: Occam’s Razor
+      - Given two models of similar generalization errors,
+      one should prefer the simpler model over the more
+      complex model
+      - A complex model has a greater chance of being fitted
+      accidentally
+      - Therefore, one should include model complexity when
+      evaluating a model
+      - Generalization Error (泛化误差)
+      - $$
+      \text{Gen. Error(Model)} = \text{Train. Error(Model, Train. Data)} + \alpha \times \text{Complexity(Model)}
+      $$
+    
+#### 1. Estimating the Complexity of Decision Trees
+##### Pessimistic Error Estimate of Decision Tree T with k Leaf Nodes
+
+Pessimistic: it assumes that the generalization error will be larger than the training error, so it is necessary to add the penalty term
+
+$$
+err_{gen}(T) = err(T) + \Omega \times \frac{k}{N_{train}}
+$$
+
+- **$err(T)$**: error rate on all training records
+- **$\Omega$**: trade-off hyper-parameter (similar to \alpha)
+    - Relative cost of adding a leaf node
+- **$k$**: number of leaf nodes
+- **$N_{train}$**: total number of training records
+
+Example:
+<p style="display: block;">
+  <img src="image_131.png" alt="image_131"/>
+</p>
+
+Resubstitution Estimate:
+- Using training error as an optimistic estimate of
+generalization error
+- Referred to as optimistic error estimate
+
+#### 2. Pre-Pruning (Early Stopping Rule)
+
+- **Stop the algorithm before it becomes a fully-grown tree**
+- **Typical stopping conditions for a node:**
+    - Stop if all instances belong to the same class
+    - Stop if all the attribute values are the same
+- **More restrictive conditions:**
+    - Stop if number of instances is less than some user-specified threshold
+    - Stop if class distribution of instances are independent of the available features (e.g., using $\chi^2$ test)
+    - Stop if expanding the current node does not improve impurity measures (e.g., Gini or information gain)
+    - Stop if estimated generalization error falls below certain threshold
+
+#### 3. Post-Pruning
+
+- **Grow decision tree to its entirety**
+- **Subtree replacement**
+    - Trim the nodes of the decision tree in a bottom-up fashion
+    - If generalization error improves after trimming, replace sub-tree by a leaf node
+    - Class label of leaf node is determined from majority class of instances in the sub-tree
+
+
+
+      
