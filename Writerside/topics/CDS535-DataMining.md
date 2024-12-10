@@ -80,6 +80,7 @@
 - 社会科学：描述社会现象、人类行为等。 
 - 生物信息学：描述基因表达、蛋白质结构等。
 
+### Data Mining Tasks
 - Classification [Predictive]
 - Clustering [Descriptive]
 - Association Rule Discovery [Descriptive]  
@@ -90,6 +91,10 @@
 ![image_4.png](image_4.png)
 
 ## 3. Predictive Modeling
+<note>本章具体内容见以下链接</note>
+
+[](#8-classification)
+
 
 ### 1. predictive modeling: classification
 - Find a model	for class attribute as a function of the values of other attributes
@@ -141,7 +146,7 @@ items.
 ## 4. Data Preprocessing
 
 ### 1. Outliers
-### 2. Missing Values
+### 2. the Missing Values
 ### 3. Duplicate Data
 
 <note>本章具体内容见以下链接</note>
@@ -151,6 +156,10 @@ items.
 [](#9-data-preprocessing)
 
 ## 5. Decision Trees
+
+<note>本章具体内容见以下链接</note>
+
+[](#1-decision-tree-algorithms)
 
 ### 1. Test Condition for Nominal Attributes
 - Multi-way split:
@@ -255,7 +264,7 @@ $
 
 | Property       | Symbol | Nominal | Ordinal | Interval | Ratio |
 |----------------|--------|---------|---------|----------|-------|
-| Distinctness   | = !=   | ✅       | ✅       | ✅        | ✅     |
+| Distinctness   | = ≠    | ✅       | ✅       | ✅        | ✅     |
 | Order          | < >    |         | ✅       | ✅        | ✅️    |
 | Addition       | + -    |         |         | ✅        | ✅️    |
 | Multiplication | * /    |         |         |          | ✅     |
@@ -505,5 +514,356 @@ classification
   - Feature construction
   - Mapping data to new space
 
+## 8. Classification
+
+- Goal: previously unseen records should be
+  assigned a class as accurately as possible.
+
+- General Approach for Building
+  Classification Model
+
+<p style="display: block;">
+  <img src="image_118.png" alt="image_118"/>
+</p>
+
+### Classification Techniques
+- Base Classifiers
+  - Decision Tree based Methods
+  - Rule-based Methods
+  - Nearest-neighbor
+  - Naïve Bayes and Bayesian Belief Networks
+  - Support Vector Machines
+  - Neural Networks, Deep Neural Nets
+
+- Ensemble Classifiers
+  - Boosting
+  - Bagging
+  - Random Forests
+
+<p style="display: block;">
+  <img src="image_119.png" alt="image_119"/>
+</p>
+
+### 1. Decision Tree Algorithms
+1. Hunt’s Algorithm (one of the earliest)
+   - General Structure of Hunt’s Algorithm
+   - Let Dt be the set of training
+     records that reach a node t
+     - General Procedure:
+       - If Dt contains records that
+       belong the same class yt,
+       then t is a leaf node
+       labeled as yt
+       - If Dt contains records that
+       belong to more than one
+       class, use an attribute test
+       to split the data into smaller
+       subsets. Recursively apply
+       the procedure to each
+       subset.
+2. CART
+3. ID3, C4.5
+4. SLIQ, SPRINT
+
+### 2. Design Issues of Decision Tree Induction
+
+1. Greedy strategy
+   - Split the records based on an attribute test that
+   optimizes certain criterion
+2. How should training records be split?
+   - Method for expressing test condition
+     - depending on attribute types
+   - Measure for evaluating the goodness of a test
+     condition
+3. How should the splitting procedure stop?
+   - Stop splitting if all the records belong to the same
+   class or have identical attribute values
+   - Early termination
+
+### 3. Methods for Expressing Test Conditions
+
+1. Binary 
+2. Nominal 
+   - Multi-way split:
+     - Use as many partitions as distinct values.
+   
+   - Binary split:
+     - Divides values into two subsets
+
+   - ![image_6.png](image_6.png)
+   
+3. Ordinal 
+   - Multi-way split:
+     - Use as many partitions as distinct values
+
+   - Binary split:
+     - Divides values into two subsets
+     - Preserve order property among attribute values
+
+   - ![image_7.png](image_7.png)
+   
+4. Continuous
+   - ![image_8.png](image_8.png)
+   - Splitting Based on Continuous Attributes
+     - Discretization to form an ordinal categorical
+       attribute
+     - Ranges can be found by equal interval bucketing,
+       equal frequency bucketing (percentiles), or
+       clustering.
+       - Static – discretize once at the beginning
+       - Dynamic – repeat at each node
+   - Binary Decision: (A < v) or (A >= v)
+     - consider all possible splits and finds the best cut
+     - can be more compute intensive
+
+### 4. How to determine the Best Split
+
+- Greedy approach:
+  - Nodes with purer class distribution are preferred
+
+### 5. Measures of Node Impurity
+<tip>应该重要吧</tip>
+
+- $p_i(t)$ 是节点 $t$ 上类 $i$ 的频率， $c$ 是类的总数。
+
+#### 1. Gini Index
+
+$$
+Gini \ Index = 1 - \sum_{i=0}^{c-1} p_i(t)^2
+$$
+
+For 2-class problem (p, 1 – p):
+
+$$
+GINI = 1 – p2 – (1 – p)2 = 2p (1-p)
+$$
+
+- When a node $p$ is split into $k$ partitions (children)
+
+$$
+GINI_{split} = \sum_{i=1}^{k} \frac{n_i}{n} GINI(i)
+$$
+where,
+$$
+n_i = \text{number of records at child } i
+$$
+$$
+n = \text{number of records at parent node } p
+$$
+
+- Binary Attributes: Computing GINI Index
+<p style="display: block;">
+  <img src="image_120.png" alt="image_120"/>
+</p>
+<p style="display: block;">
+  <img src="image_122.png" alt="image_122"/>
+</p>
+
+- Categorical Attributes: Computing Gini Index
+<p style="display: block;">
+  <img src="image_121.png" alt="image_121"/>
+</p>
+
+- Continuous Attributes: Computing Gini Index
+<p style="display: block;">
+  <img src="image_123.png" alt="image_123"/>
+</p>
+
+<p style="display: block;">
+  <img src="image_124.png" alt="image_124"/>
+</p>
+
+<tip>Gini反映的是不纯度（impurity），所以越低越好</tip>
+<tip>Gain算的是增益，高的好</tip>
+
+#### 2. Entropy (熵)
+
+$$
+Entropy = -\sum_{i=0}^{c-1} p_i(t) \log_2 p_i(t)
+$$
+
+- Computing Entropy of a Single Node
+<p style="display: block;">
+  <img src="image_125.png" alt="image_125"/>
+</p>
+
+- Computing Information Gain After Splitting
+
+  - $$
+  Gain_{split} = Entropy(p) - \sum_{i=1}^{k} \frac{n_i}{n} Entropy(i)
+  $$
+
+  - Parent Node, $p$ is split into $k$ partitions (children)  
+  $n_i$ is the number of records in child node $i$
+
+  - Choose the split that achieves the most reduction (maximizes GAIN)
+  - Used in the ID3 and C4.5 decision tree algorithms
+  - Information gain is the mutual information between the class variable and the splitting variable
+
+#### 3. Problem with large number of partitions
+- **Node impurity measures tend to prefer splits that
+  result in large number of partitions, each being
+  small but pure**
+- Customer ID has highest information gain
+  because entropy for all the children is zero
+
+#### 4. Gain Ratio
+
+- Gain Ratio:
+$$
+\text{Gain Ratio} = \frac{\text{Gain}_{\text{split}}}{\text{Split Info}}
+$$
+
+- Split Info Formula:
+$$
+\text{Split Info} = - \sum_{i=1}^{k} \frac{n_i}{n} \log_2 \frac{n_i}{n}
+$$
+
+- Definitions:
+- **Parent Node**, $p$ is split into $k$ partitions (children)
+- $n_i$ is the number of records in child node $i$
+
+- Key Points:
+- Adjusts Information Gain by the entropy of the partitioning (\( \text{Split Info} \)).
+    - Higher entropy partitioning (large number of small partitions) is penalized!
+- Used in C4.5 algorithm
+- Designed to overcome the disadvantage of Information Gain
+
+#### 5. Misclassification Error (错误分类率)
+
+$$
+Classification \ error = 1 - \max[p_i(t)]
+$$
+
+- Computing Error of a Single Node
+<p style="display: block;">
+  <img src="image_126.png" alt="image_126"/>
+</p>
+
+### 6. Finding the Best Split
+1. Compute impurity measure (P) before splitting 
+2. Compute impurity measure (M) after splitting
+   - Compute impurity measure of each child node
+   - M is the weighted impurity of child nodes
+3. Choose the attribute test condition that produces the highest gain
+
+$$ Gain = P - M $$
+
+or equivalently, lowest impurity (highest purity) measure after splitting (M)
+
+### 7. Comparison among Impurity Measure
+<p style="display: block;">
+  <img src="image_127.png" alt="image_127"/>
+</p>
+
+### 8. Decision Tree Based Classification
+- **Advantages:**
+    - Relatively inexpensive to construct
+    - Extremely fast at classifying unknown records
+    - Easy to interpret for small-sized trees
+    - Robust to noise (especially when methods to avoid overfitting are employed)
+    - Can easily handle redundant attributes
+    - Can easily handle irrelevant attributes (unless the attributes are interacting)
+
+- **Disadvantages:**
+    - Due to the greedy nature of splitting criterion, interacting attributes (that can distinguish between classes together but not individually) may be passed over in favor of other attributes that are less discriminating.
+    - Each decision boundary involves only a single attribute
+
+#### 1. Data Fragmentation
+- Number of instances gets smaller as you traverse
+  down the tree
+- Number of instances at the leaf nodes could be
+too small to make any statistically significant
+decision
+
+#### 2. Search Strategy 
+- Finding an optimal decision tree is NP-hard
+- The algorithm presented so far uses a greedy,
+  top-down, recursive partitioning strategy to
+  induce a reasonable solution
+- Other strategies:
+    - Bottom-up
+    - Bi-directional
+
+#### 3. Expressiveness
+
+- Decision trees provide expressive representation for learning discrete-valued functions.
+
+- **Do not generalize well to certain types of Boolean functions.**
+    - **Example: Parity Function**
+        - Class = 1 if there is an even number of Boolean attributes with truth value = True.
+        - Class = 0 if there is an odd number of Boolean attributes with truth value = True.
+    - For accurate modeling, must have a complete tree.
+
+- **Not expressive enough for modeling continuous variables.**
+    - Particularly when test condition involves only a single attribute at-a-time.
+
+##### Decision Boundary
+- Border line between two neighboring regions of different classes is
+  known as decision boundary
+- Decision boundary is parallel to axes because test condition involves
+  a single attribute at-a-time
+<p style="display: block;">
+  <img src="image_128.png" alt="image_128"/>
+</p>
+
+##### Oblique Decision Trees
+<p style="display: block;">
+  <img src="image_129.png" alt="image_129"/>
+</p>
+
+#### 4. Tree Replication
+<p style="display: block;">
+  <img src="image_130.png" alt="image_130"/>
+</p>
+
+### 9. Practical Issues of Classification
+
+- **Classification Errors**
+1. Training errors: Errors committed on the training set
+2. Test errors: Errors committed on the test set
+3. Generalization errors: Expected error of a model over random selection of records from same distribution
+
+#### 1. Underfitting and Overfitting
+- Underfitting: when model is too simple, both training and test errors are large
+- Overfitting: when model is too complex, training error is small but test error is large
+  - Increasing the size of training data reduces the difference between training and
+    testing errors at a given size of model
+  - Reasons for Model Overfitting
+    - Noisy data
+    - Not enough training data
+    - High model complexity
+<note>
+Overfitting results in decision trees that are more
+complex than necessary 
+</note>
+<note>
+Training error does not provide a good estimate
+of how well the tree will perform on previously
+unseen records
+</note>
+<note>
+Need ways for estimating generalization errors
+</note>
 
 
+
+#### 2. Missing Values
+
+#### 3.  Model Evaluation/Costs of Classification
+
+### 10. Model selection
+- Performed during model building
+- Purpose is to ensure that model is not overly
+complex (to avoid overfitting)
+- Need to estimate generalization error
+  - Using Validation Set
+  - Divide training data into two parts:
+    - Training set:
+      - use for model building
+    - Validation set:
+      - use for estimating generalization error
+      - Note: validation set is not the same as test set
+    - Drawback:
+      - Less data available for training
+  - Incorporating Model Complexity
