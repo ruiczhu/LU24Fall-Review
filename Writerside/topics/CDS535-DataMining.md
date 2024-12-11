@@ -1469,7 +1469,43 @@ generalization error
 - Construct a set of base classifiers learned from the training data
 - Predict class label of test records by combining the predictions made by multiple classifiers (e.g., by taking majority vote)
 
+- Ensemble Methods work better than a single base classifier if:
+  1. All base classifiers are independent of each other
+  2. All base classifiers perform better than random guessing (error rate < 0.5 for binary classification)
 
+### 1. Rationale for Ensemble Learning
+- Ensemble Methods work best with unstable base classifiers
+  - Classifiers that are sensitive to minor perturbations in training set, due to high model complexity
+  - Examples: Unpruned decision trees, ANNs, …
+- <p style="display: block;">
+    <img src="image_162.png" alt="image_162"/>
+  </p>
 
+### 2. Constructing Ensemble Classifiers
+1. By manipulating training set
+   - Example: bagging, boosting, random forests
+2. By manipulating input features
+   - Example: random forests
+3. By manipulating class labels
+   - Example: error-correcting output coding
+4. By manipulating learning algorithm
+   - Example: injecting randomness in the initial weights of	ANN
 
-      
+### 3. Bagging (Bootstrap AGGregatING)
+- Bootstrap sampling: sampling with replacement
+- Bootstrap采样
+  - Bootstrap采样是从原始训练集中随机抽取多个不同的训练子集（可能包含重复样本）的过程。在每次采样中，每个训练实例被选中的概率是相同的，且采样是有放回的，这意味着同一个训练实例可能在同一个子训练集中出现多次，也可能根本不出现。
+  - 训练实例在Bootstrap样本中的选中概率
+  - 对于一个包含n个训练实例的原始训练集，在Bootstrap采样中，一个特定的训练实例被选中进入某个子训练集的概率可以通过以下公式计算：
+  $$
+  P= 1 - (1 - \frac{1}{n})^n
+  $$
+  - 当n很大时（即训练集包含大量实例时），这个概率可以近似为0.632。这意味着在Bootstrap采样中，大约有63.2%的训练实例会被选中进入某个子训练集，而剩下的36.8%则不会被选中。这些未被选中的实例被称为袋外数据（Out of Bag, OOB），它们可以用于评估基学习器的性能，而无需额外的验证集。
+<p style="display: block;">
+  <img src="image_163.png" alt="image_163"/>
+</p>
+
+### 4. Boosting
+- Boosting是一种迭代算法，用于将多个弱学习器组合成一个强学习器。在这个过程中，算法会自适应地改变训练数据的分布，以便更多地关注那些之前被误分类的记录。
+
+### 5. Random Forest Algorithm
