@@ -442,35 +442,417 @@ $\\( \frac{\partial f}{\partial q} = -4 \\)$, $\\( \frac{\partial q}{\partial x}
 
 ### Quiz 3.6
 
+1. In a Recurrent Neural Network, what is the purpose of the hidden state?
+
+    A. To reduce the dimensionality of the input data  
+    **B. To store information from previous time steps**  
+    C. To introduce non-linearity  
+    D. To update weights
+
+2. In RNN, what is the purpose of the Softmax activation function?
+
+    **A. To convert input values into probabilities**  
+    B. To introduce non-linearity  
+    C. To update weights  
+    D. To reduce the dimensionality of the input data
+
+3. Which layer type is responsible for making final predictions in an RNN?
+
+    A. Input layer  
+    **B. Output layer**  
+    C. Activation layer  
+    D. Hidden layer
+
+4. T/F: The main and most important feature of RNN is its hidden state, which remembers some information about a sequence.
+
+    **True**
+
 ### Quiz 3.7
 
+1. What is 'gradient' when we are talking about RNN?
+
+    **A. A gradient is a partial derivative with respect to its inputs**  
+    B. It is how RNN calls its features  
+    C. A parameter that can help you improve the algorithm's accuracy  
+    D. The most important step of RNN algorithm
+
+2. What is the purpose of the BackPropagation Through Time (BPTT) algorithm in RNN training?
+
+    A. To adjust the learning rate during training  
+    **B. To compute the gradients and update the network's parameters**  
+    C. To prevent overfitting by regularizing the model  
+    D. None of the above
+
+3. You have a pet dog whose mood is heavily dependent on the current and past few days' weather. You've collected data for the past 365 days on the weather, which you represent as a sequence as $x^{\langle 1 \rangle}, \ldots, x^{\langle 365 \rangle}$. You’ve also collected data on your dog's mood, which you represent as $y^{\langle 1 \rangle}, \ldots, y^{\langle 365 \rangle}$. If you'd like to build a model to map from $x \rightarrow y$, you will choose:
+
+    A. RNN with backpropagation, because this allows backpropagation to compute more accurate gradients.  
+    **B. Unidirectional RNN, because the value of $y^{\langle t \rangle}$ depends only on $x^{\langle 1 \rangle}, \ldots, x^{\langle t \rangle}$ but not on $x^{\langle t+1 \rangle}, \ldots, x^{\langle 365 \rangle}$**  
+    C. RNN with backpropagation, because this allows the prediction of mood on day $t$ to take into account more information.  
+    D. Unidirectional RNN, because the value of $y^{\langle t \rangle}$ depends only on $x^{\langle t \rangle}$ and not other days' weather.
+
 ### Quiz 3.8
+
+1. What does the term "Vanishing Gradients" refer to in the context of RNNs?
+
+    A. The overfitting of RNN models  
+    B. The vanishing of the loss function during training  
+    **C. The phenomenon where gradients become too small during training, hindering learning in deep networks**  
+    D. The rapid convergence of RNN training
+
+2. What problem does the "Vanishing Gradient" cause in RNN?
+
+    A. Gradient explosion  
+    **B. Slow training**  
+    C. Rapid convergence  
+    D. Weight initialization
+
+3. You are training an RNN, and find that your weights and activations are all taking on the value of NaN ("Not a Number"). Which of these is the most likely cause of this problem?
+
+    A. ReLU activation function $g(\cdot)$ used to compute $g(z)$, where $z$ is too large.  
+    B. Sigmoid activation function $g(\cdot)$ used to compute $g(z)$, where $z$ is too large.  
+    **C. Exploding gradient**  
+    D. Vanishing gradient
+
+4. T/F: Saturated activation functions can be one of the causes of the vanishing gradient problem, because when these functions saturate (output values approach 0 or 1), the gradients become very small.
+
+    **True**
 
 ## Lecture 4
 
 ### Quiz 4.1
 
+1. Which of the following approaches could be used to solve the vanishing gradient problem of RNN?
+
+    A. Using ReLU activation function  
+    B. Long-Short Term Memory (LSTM) architecture  
+    C. Gating  
+    **D. All of the above**
+
+2. Which of the following options about LSTM is true?
+
+    A. LSTM networks are an extension for recurrent neural networks, which basically extends their memory. Therefore it is not recommended to use it, unless you are using a small Dataset.  
+    B. LSTM networks are an extension for recurrent neural networks, which basically shorten their memory.  
+    C. It is well suited to learn from important experiences that have very low time lags in between.  
+    **D. LSTM networks are an extension for recurrent neural networks, which basically extends their memory. Therefore it is well suited to learn from important experiences that have very long time lags in between.**
+
+3. Which type of gating mechanism is used in Long Short-Term Memory (LSTM) networks?
+
+    A. Memory gate and update gate  
+    B. Reset gate and update gate  
+    **C. Forget gate, input gate, and output gate**  
+    D. Hidden gate and output gate
+
+4. What is the role of the "Forget gate" in Long Short-Term Memory (LSTM) networks?
+
+    **A. Decides what information to forget from the previous time step**  
+    B. Computes the output of the LSTM  
+    C. Determines which information to keep in the cell state  
+    D. Updates the cell state with new information
+
 ### Quiz 4.2
+
+1. What role do gates with sigmoid activation functions play in Long Short-Term Memory (LSTM) networks?
+
+    a. Control the depth of the network  
+    **b. Regulate the cell state update**  
+    c. Determine the output of the LSTM  
+    d. Enable parallel processing
+
+2. What is the main function of the Input Gate in LSTM networks?
+
+    a. Decide which information to forget  
+    b. Regulate the network's output  
+    c. Control the flow of information  
+    **d. Determine the cell state's update**
+
+3. What is the primary advantage of Gated Recurrent Unit (GRU) RNNs over traditional LSTMs?
+
+    a. Greater memory capacity  
+    **b. Simplicity and reduced complexity**  
+    c. Faster training times  
+    d. Improved parallelism
+
+4. Which of the following statements are INCORRECT about RNN/LSTM/GRU?
+
+    a. Recurrent neural networks can handle a sequence of arbitrary length, while feedforward neural networks can not.  
+    b. GRU is computationally more efficient than LSTMs if the hidden dimension size for LSTM and GRU are the same.  
+    **c. Gradient clipping is an effective way of solving the vanishing gradient problem.**  
+    d. Training recurrent neural networks is hard because of vanishing and exploding gradient problems.
 
 ### Quiz 4.3
 
+1. You want to train a neural network to predict the next 30 daily prices using the previous 30 daily prices as inputs. Which model selection and explanation make the most sense?
+
+    a. A single one-directional RNN because it considers the order of the prices, and the output length is the same as the input length.  
+    b. A fully connected deep feed-forward network because it considers all input prices in the hidden layers to make the best decision.  
+    c. A bidirectional RNN because the prediction benefits from future labels.  
+    **d. Unidirectional RNN architecture because it can generate a sequence of future prices based on all input historical prices.**
+
+2. What is the primary application of RNNs in natural language processing (NLP)?
+
+    **a. Machine translation**  
+    b. Speech synthesis  
+    c. Image classification  
+    d. Object detection
+
+3. What kind of Sequential Output process does the following figure show?
+
+    ![img_7.png](img_7.png)
+
+    a. Speech Recognition  
+    b. Machine Translation  
+    **c. POS Tagging**  
+    d. None of above
+
 ### Quiz 4.4
+
+1. What is the primary purpose of Sequence-to-Sequence (Seq2Seq) models in deep learning?
+
+    a. Text classification  
+    **b. Handling tasks that involve variable-length sequences, such as machine translation and text summarization**  
+    c. Reinforcement learning  
+    d. None of above
+
+2. In the context of machine translation, what role does the encoder in a Seq2Seq model play?
+
+    a. Translates the source sentence to the target language directly  
+    b. Regularizes the translation to make it smoother  
+    **c. Compresses the source sentence into a fixed-size context vector**  
+    d. Generates the final translated sentence based on the context vector
+
+3. What is the primary architectural limitation of traditional Seq2Seq models based on recurrent neural networks (RNNs)?
+
+    a. Excessive use of memory  
+    b. Overfitting to training data  
+    c. Inability to handle variable-length sequences  
+    **d. Lack of parallelism in training and inference**
+
+4. In the context of Seq2Seq, what challenge arises when relying solely on the final hidden state of the encoder to represent the entire input sequence?
+
+    **a. Loss of sequential information from the beginning of the sequence**  
+    b. Gradient instability during backpropagation  
+    c. Overfitting due to excessive reliance on one state  
+    d. High computational overhead
 
 ### Quiz 4.5
 
+1. For an image recognition problem, which neural network architecture would be better suited to solve the problem?
+
+    a. Multilayer Perceptron  
+    **b. Convolutional Neural Network**  
+    c. Single-Layer Perceptron  
+    d. None of the above
+
+2. Which of the following options regarding Image Classification with CNN is correct?
+
+    a. We must use "fully connected" neural networks in image processing.  
+    b. Patterns are much smaller than the whole image, so we should consider the whole image in each receptive field.  
+    c. Every neuron has to see the whole image.  
+    **d. Each receptive field has a set of neurons.**
+
+3. Suppose we have an image whose size is 4x4, while we set the kernel size to 3x3, and stride = 2. How many receptive fields do we need at least to cover the whole image?
+
+    **Answer:** 4
+
 ### Quiz 4.6
+
+1. Answer the following questions based on the image below:
+
+    ![img_8.png](img_8.png)
+
+    1. What value would be in place of the question mark?  
+       **Answer: 4**
+    2. What is the stride value in this case?  
+       **Answer: 1**
+
+2. Given an image of size 27 x 27 and a filter of size 5 x 5 with a stride of 2 and no padding. What is the output size?
+
+    - **Calculation formula:**  
+      $$
+      \text{Output size} = \left\lfloor \frac{\text{Input size} - \text{Filter size}}{\text{Stride}} \right\rfloor + 1
+      $$
+      $$
+      = \left\lfloor \frac{27 - 5}{2} \right\rfloor + 1 = \left\lfloor \frac{22}{2} \right\rfloor + 1 = 11 + 1 = 12
+      $$
+
+    a. 23 x 23  
+    b. 13 x 13  
+    c. 27 x 27  
+    **d. 12 x 12**
+
+3. Given the 5 x 5 input image and 3 x 3 filter, suppose stride = 1, which is the correct output?
+
+**5 x 5 input image:**  
+
+![img_9.png](img_9.png)
+
+**3 x 3 filter:**  
+
+![img_10.png](img_10.png)
+
+A.
+```
+ 0 -1  1
+-1  0 -1
+-2  0  1
+```
+B.
+```
+ 0 -2  1
+ 1  0 -1
+-2  0  1
+```
+C.
+```
+ 0 -2  1
+-1  0 -1
+-2  0 -1
+```
+**D**.
+```
+ 0 -2 -1
+-1  0  1
+-2  0 -1
+```
 
 ### Quiz 4.7
 
+1. As shown in the figure, the Max Pooling filter operates on each feature map using a 2x2 filter, and the colors represent the corresponding sampling objects and outputs.
+
+    Which is the correct output of the Max Pooling filter?
+
+    ![img_11.png](img_11.png)
+    
+    ![img_12.png](img_12.png)
+
+2. Which of the following options are the benefits of using convolutional layers instead of fully connected ones for visual tasks?
+
+    **a. Have much fewer parameters**  
+    b. Have deeper network  
+    **c. Uses spatial context**  
+    **d. Translation invariance**
+
+3. Which of the following statements about Pooling layers are true?
+
+    **a. It is applied after convolution operations.**  
+    b. The more pooling layers the better because the number of parameters can be greatly reduced.  
+    c. We need pooling layers since the number of hidden layers required to learn the complex relations present in the image would be large.  
+    **d. It is called subsampling or downsampling.**  
+    **e. It reduces the dimensionality of each feature map by retaining the most important information.**
+
 ### Quiz 4.8
+
+1. What type of learning task is GANs often used for?
+
+    **a. Image generation**  
+    b. Reinforcement learning  
+    c. Text summarization  
+    d. Classification
+
+2. What does the generator model aim to do in GANs?
+
+    **a. Generate new data samples**  
+    b. Classify real data  
+    c. Create fake data  
+    d. Compete with the discriminator
+
+3. What does the discriminator model in GANs try to do?
+
+    a. Create latent vectors  
+    b. Fool the generator  
+    **c. Identify real data samples**  
+    d. Generate new data
+
+4. What is the primary goal of the generator model in GANs?
+
+    a. To compete with the discriminator  
+    **b. To learn the underlying data distribution**  
+    c. To classify real data samples  
+    d. To perform feature extraction
 
 ## Lecture 5
 
 ### Quiz 5.1
 
+1. What does the term "adversarial" in GANs refer to?
+
+    A. The classification of real data  
+    B. The generation of new data  
+    **C. The competitive process between two sub-models**  
+    D. The architecture of the generator
+
+2. What type of learning task is generative modelling in GANs?
+
+    A. Supervised learning  
+    B. Semi-supervised learning  
+    C. Reinforcement learning  
+    **D. Unsupervised learning**
+
+3. What is the latent space in GANs?
+
+    **A. The space of random input vectors**  
+    B. The space where real data resides  
+    C. The space of hidden layers in the generator  
+    D. The space of real data labels
+
+4. In GANs, what happens when the discriminator becomes unable to distinguish real from fake samples?
+
+    A. Discriminator becomes more efficient  
+    B. Training stops  
+    C. Discriminator becomes the generator  
+    **D. The generator updates its weights**
+
 ### Quiz 5.2
 
+1. What is mode collapse in GANs?
+
+    A. When the generator and discriminator achieve perfect equilibrium  
+    B. When the GAN training process becomes unstable  
+    C. When the discriminator fails to distinguish between real and generated samples  
+    **D. When the generator produces limited variations of samples**
+
+2. Which of the following statements about LSGAN is not true?
+
+    A. LSGANs perform more stable during the learning process.  
+    B. LSGANs adopt the least squares loss function for the discriminator.  
+    **C. LSGANs use the cross-entropy loss which avoids the vanishing gradients problem during the learning process.**  
+    D. LSGANs are able to generate higher quality images than regular GANs.
+
+3. Which of the following is true about Non-Saturating GAN Loss?
+
+    **A. The generator seeks to maximize the probability of images being real, instead of minimizing the probability of an image being fake.**  
+    B. The non-saturating loss will saturate when the input is relatively small.  
+    **C. The non-saturating loss will saturate when the input is relatively large.**  
+    **D. It avoids generator saturation through a more stable weight update mechanism.**
+
 ### Quiz 5.3
+
+1. What is the purpose of the evaluation metrics in GANs?
+
+    **A. To measure the quality and diversity of generated samples**  
+    B. To adjust the learning rate during training  
+    C. To adjust the weights and biases of the generator  
+    D. None of the above
+
+2. Which of the following statements about FID is true?
+
+    **A. Lower FID values mean better image quality and diversity.**  
+    **B. It measures the distance between fake images distributions and real images distributions.**  
+    **C. It uses the Inception network to extract features from an intermediate layer.**
+
+3. What is the purpose of the Wasserstein distance in Wasserstein GANs?
+
+    **A. To measure the similarity between real and generated samples**  
+    B. To adjust the learning rate during training  
+    C. To adjust the weights and biases of the generator  
+    D. None of the above
+
+4. What is the objective of Wasserstein GAN (WGAN)?
+
+    A. To perform image super-resolution  
+    **B. To mitigate stability issues in GANs**  
+    C. To introduce cycle consistency  
+    D. To create diverse art content
 
 ### Quiz 5.4
 
