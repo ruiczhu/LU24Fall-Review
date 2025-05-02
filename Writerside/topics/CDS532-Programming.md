@@ -57,6 +57,7 @@ a blank answer or a wrong answer.
   <img src="image_18.png" alt="image_18"/>
 </p>
 - interpretation
+
 ![image_19.png](image_19.png)
 
 ### 4. Types of Programming Language
@@ -183,6 +184,7 @@ fractional part is 0)
 - Python doesn't overwrite these memory locations (boxes).
 - Assigning a variable is more like putting a “sticky note” on a value and
   saying, “this is x”.
+
 <p style="display: block;">
   <img src="image_32.png" alt="image_32"/>
 </p>
@@ -192,10 +194,12 @@ fractional part is 0)
   - The results of the evaluated expressions in the RHS can be sequentially assigned to
   the variables on the LHS
   - Expressions and Values are separated by comma
+
 ![image_31.png](image_31.png)
 
 ### 3. Function
 - A function is like a subprogram, a small program inside a program
+
 ![image_33.png](image_33.png)
 
 ### 4. Comment
@@ -298,6 +302,7 @@ else:
 - In mixed-typed expressions Python will convert ints to floats.
 - Sometimes we want to control the type conversion. This is called explicit
   typing.
+
 ![image_51.png](image_51.png)
 
 ### 2. Type Conversions & Rounding
@@ -423,6 +428,7 @@ class Point:
     The __init__ method is a special method that is called when an object is
         created. It initializes the object’s data.
 </tip>
+
 <tip>
     The methods of an object instance can access and update the fields by using the self keyword.
 </tip>
@@ -443,6 +449,7 @@ of the object.
 ### 1. The String Data Type
 - A string is a sequence of characters enclosed within quotation marks (")
   or apostrophes (').
+
 ![image_60.png](image_60.png)
 
 <tip>We can access the individual characters in a string through indexing.</tip>
@@ -937,6 +944,7 @@ programming languages.
 - A stack is a list that can only insert and delete element at the head 
 - Push: Inserts an element at the head 
 - Pop: Deletes (and returns) the element at the head
+
 ![image_77.png](image_77.png)
 
 ![image_78.png](image_78.png)

@@ -3,10 +3,11 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="in"
-                 name="LU24Fall-Term1-review"
+                 name="LU24Fall-review"
                  start-page="starter.md">
 
     <toc-element topic="starter.md"/>
+    <toc-element topic="CDS525-DeepLearning.md"/>
     <toc-element topic="CDS535-DataMining.md"/>
     <toc-element topic="CDS532-Programming.md"/>
     <toc-element topic="CDS528-Blockchain.md"/>
