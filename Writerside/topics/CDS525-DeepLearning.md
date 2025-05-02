@@ -80,9 +80,11 @@
 4. Which of the following two networks is deeper?
 
     **A**  
+
     ![img.png](img.png)
 
     B
+
     ![img_1.png](img_1.png)
 
 ### Quiz 1.4
@@ -355,9 +357,11 @@ $\\( \frac{\partial f}{\partial q} = -4 \\)$, $\\( \frac{\partial q}{\partial x}
 1. Word2Vec utilizes two architectures: Skip-gram and CBOW (continuous bag-of-words), please match the figures:
 
     A. Skip-gram:  
+
     ![img_4.png](img_4.png)
 
     B. CBOW:  
+
     ![img_5.png](img_5.png)
 
 2. The table below lists several co-occurrence probabilities given words “ice” and “steam” and their ratios based on statistics from a large corpus with GloVe.
@@ -424,7 +428,9 @@ $\\( \frac{\partial f}{\partial q} = -4 \\)$, $\\( \frac{\partial q}{\partial x}
     D. They are faster than other neural network architectures
 
 4. You are training the RNN language model shown in the figure:  
+
     ![img_6.png](img_6.png)  
+
     where $w_1$, $w_2$, $w_3$ refer to the weights.
 
     At the $n$-th time step, what is the RNN doing? Choose the best answer.
