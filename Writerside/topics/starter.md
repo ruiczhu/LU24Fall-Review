@@ -12,6 +12,6 @@
 
 ## Term2 test time schedule
 
-| Date       | Course Title                                 | Time  | Venue |
-|------------|----------------------------------------------|-------|-------|
-| 2025-05-16 | [CDS525-DeepLearning](CDS525-DeepLearning.md) | 09:30 | MBG22 |
+| Date       | Course Title                                  | Time  | Venue   |
+|------------|-----------------------------------------------|-------|---------|
+| 2025-05-06 | [CDS525-DeepLearning](CDS525-DeepLearning.md) | 19:00 | LCHLG01 |
