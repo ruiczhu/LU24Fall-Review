@@ -856,44 +856,531 @@ C.
 
 ### Quiz 5.4
 
+1. Which techniques can be used to address the problem of mode collapse in GANs?
+
+    **a. Gradient penalty**  
+    **b. Collecting more varied training data**  
+    c. Dropout
+
+2. Which technique can be used to improve stability and prevent vanishing gradients in GAN training?
+
+    **a. Gradient penalty**  
+    **b. Weight regularization**  
+    **c. Batch normalization**
+
 ### Quiz 5.5
+
+未开放
 
 ## Lecture 6
 
 ### Quiz 6.1
 
+1. What is the key idea behind "attention mechanisms" in Seq2Seq models, and how do they improve performance?
+
+    A. Attention mechanisms enable models to ignore parts of the input sequence to improve efficiency and speed  
+    B. Attention mechanisms increase the model's attention span by using recurrent connections  
+    C. Attention mechanisms help Seq2Seq models generate random outputs for diversity  
+    **D. Attention mechanisms allow models to selectively focus on specific parts of the input sequence when generating the output sequence, improving alignment and handling longer sequences**
+
+2. The attention mechanism was introduced to solve certain challenges in the Seq2Seq model. Which of these statements about the attention mechanism is NOT true?
+
+    A. Attention mechanisms allow for the modeling of long-term dependencies in the data  
+    B. Attention alleviates the need for the encoder to compress all information into a fixed-size context vector  
+    C. Attention allows the model to focus on different parts of the input for different words in the output  
+    **D. The attention mechanism is primarily used to reduce computational complexity in Seq2Seq models**
+
+3. As shown in the figure below, assume we input "知識就是力量" and try to get the value of $c_2$. Which of the following options is the most appropriate?
+
+    ![img_13.png](img_13.png)
+
+    **A. $c_2 = \sum \hat{a}_{i2} h_i = 0.5 h_5 + 0.5 h_6$**  
+    B. $c_2 = \sum \hat{a}_{i2} h_i = 0.5 h_3 + 0.5 h_4$  
+    C. $c_2 = \sum \hat{a}_{i3} h_i = 0.5 h_3 + 0.5 h_4$  
+    D. $c_2 = \sum \hat{a}_{i2} h_i = 0.5 h_2 + 0.5 h_3$
+
 ### Quiz 6.2
+
+1. How to calculate attention weights in an attention mechanism typically?
+
+    a. By using a fixed set of predefined attention weights.  
+    **b. It is computed as the dot product of the query and key vectors, divided by the square root of the dimension of the key vectors.**  
+    c. By performing a weighted average of the key vectors.  
+    d. By concatenating the query and key vectors and then applying a sigmoid activation.
+
+2. Which statement about the application of the attention mechanism is/are correct?
+
+    **a. In machine translation, text summarization, and question-answering tasks, the attention mechanism can help the model understand the meaning of words in context and to focus on the most relevant information**  
+    **b. In computer vision tasks like image classification and object detection, the attention mechanism can help the model to identify the most important parts of an image and to focus on specific objects in the scene**  
+    **c. In speech recognition tasks, such as transcribing audio recordings or recognizing spoken commands, the attention mechanism can help the model focus on the audio signal's relevant parts and identify the words being spoken**  
+    d. None of above
+
+3. Which task of attention mechanism is shown in the Figure below?
+
+    ![img_14.png](img_14.png)
+
+    a. Speech recognition  
+    b. Image classification  
+    **c. Image captioning**  
+    d. Image deblurring
+
+4. Regarding the attention mechanism application task in the Figure, which step or its explanation is wrong?
+
+    ![img_14.png](img_14.png)
+
+    a. For each sequence element, outputs from previous elements are used as inputs, in combination with new sequence data. This gives the RNN networks a sort of memory which might make captions more informative and context-aware.  
+    **b. With an Attention mechanism, the image is first divided into several parts, and we compute an image representation of each. When the RNN is generating a new word, the attention mechanism is focusing on all parts of the image, so the decoder uses the full image.**  
+    c. The encoder-decoder image captioning system would encode the image, using a pre-trained Convolutional Neural Network that would produce a hidden state.  
+    d. RNNs tend to be computationally expensive to train and evaluate, but attention models can help address this problem by selecting the most relevant elements from an input image.
 
 ### Quiz 6.3
 
+1. Which application task of attention mechanism is shown in the below Figure?
+
+    ![img_15.png](img_15.png)
+
+    **a. Machine Reading Comprehension**  
+    b. Machine Translation  
+    c. Neural Turing  
+    d. Speech Recognition
+
+2. Which of the following statements about Neural Turing Machines is/are correct?
+
+    **a. This architecture enables the machine to learn algorithms, manage sequential data, and access historical information, thus broadening the spectrum of tasks that can be undertaken by neural networks.**  
+    **b. Neural Turing Machines essentially entail a form of neural network architecture equipped with an external memory bank, further enhancing its ability to process and manipulate data.**  
+    **c. The management and optimization of external memory in Neural Turing Machines may introduce complexities related to memory allocation and access efficiency.**  
+    **d. By utilizing attention mechanisms, the neural network can navigate and interact with the external memory, allowing for read and write operations.**
+
+3. Which mathematical operation is performed during the computation of attention scores in a typical attention mechanism?
+
+    a. Element-wise division  
+    b. Convolution  
+    c. Principal Component Analysis (PCA)  
+    **d. Matrix multiplication**
+
 ### Quiz 6.4
+
+1. What problems do RNN architectures without attention have for sequence-to-sequence problems?
+
+    **A. It is hard to learn the long-distance dependencies in RNNs.**
+
+    **B. We cannot compute the future hidden states until the past RNN hidden states have already been computed.**
+
+    **C. Lack of parallelizability.**
+
+    D. None of above
+
+2. In the original Transformer model, how are attention weights calculated for a given token?
+
+    **A. As the dot product between the token's embeddings and those of all other tokens, followed by a SoftMax operation.**
+
+    B. By computing the token's position relative to other tokens in the sequence.
+
+    C. Through a convolutional operation applied to the token's neighborhood.
+
+    D. Using a feedforward neural network applied to the token's embeddings
+
+3. What is the primary advantage of using the Transformer architecture over traditional RNNs for sequence tasks?
+
+    A. Inherent capability to handle image data
+
+    **B. Ability to capture long-range dependencies without the problem of vanishing gradients**
+
+    C. Lower computational complexity
+
+    D. Smaller number of model parameters
+
+4. What is one of the main disadvantages of transformer models for language modelling?
+
+    A. Limited parallelization capabilities
+
+    B. Prone to vanishing gradients
+
+    C. Inability to handle sequential data
+
+    **D. Large memory requirements**
 
 ## Lecture 7
 
 ### Quiz 7.1
 
+1. In the original Transformer model, how are self-attention weights calculated for a given token?
+
+    a. Through a convolutional operation applied to the token's neighbourhood  
+    b. By computing the token's position relative to other tokens in the sequence  
+    c. Using a feedforward neural network applied to the token's embeddings  
+    **d. As the dot product between the token's embeddings and those of all other tokens, followed by a softmax operation**
+
+2. In the context of self-attention mechanisms, what is the purpose of the query, key, and value vectors?
+
+    a. Query vectors represent the input sequence, key vectors contain positional information, and value vectors store the final predictions  
+    **b. Query vectors capture the global context, key vectors determine the importance of specific elements, and value vectors store the intermediate feature representations**  
+    c. Query vectors determine the output sequence, key vectors represent the previous hidden states, and value vectors help with gradient flow  
+    d. Query vectors store the attention weights, key vectors contain the input embeddings, and value vectors are learned during training
+
+3. What is the primary challenge of using self-attention mechanisms in very long sequences?
+
+    a. The risk of numerical instability; this is addressed by using fixed-length sequences  
+    **b. Quadratic increase in computational complexity**  
+    c. The risk of overfitting; this is resolved by applying dropout to the attention weights  
+    d. The difficulty of training deep networks; this is addressed by using shallower networks
+
 ### Quiz 7.2
+
+1. In the context of the Transformer model, what is the primary motivation behind using multi-head self-attention?
+
+    **A. To capture different types of relationships and dependencies in the input data by allowing the model to attend to different positions at different semantic levels**
+
+    B. To make the model more robust to variations in input data
+
+    C. To reduce computational complexity by performing attention on multiple heads in parallel
+
+    D. To increase model interpretability by visualizing multiple attention heads separately
+
+2. In a multi-head attention mechanism, what do different attention heads learn?
+
+    A. Each head is responsible for attending to different input data to improve alignment
+
+    B. Attention heads focus on different modalities, such as text and images, allowing for cross-modal learning
+
+    **C. Different attention heads learn different aspects of the same data, improving the model's robustness**
+
+    D. All attention heads learn the same attention distribution, but with different parameterizations
+
+3. In multi-head attention, how are the attention weights typically combined from different heads?
+
+    A. By selecting the attention weights from the head with the highest weight
+
+    B. By taking the average of all the attention weights
+
+    **C. By concatenating the attention weights from different heads**
+
+    D. By multiplying the attention weights from different heads
+
+4. Which of the following statements about the multi-head attention mechanism in Transformers is correct?
+
+    A. It computes the average attention score from multiple heads
+
+    B. It can reduce the model's computational complexity
+
+    C. It can avoid overfitting in the model
+
+    **D. It allows the model to focus on different parts of the input sequence simultaneously**
+
+    E. None of above
 
 ### Quiz 7.3
 
+1. In the context of the Transformer model, which component uses multi-head self-attention?
+
+    A. The encoder  
+    B. The decoder  
+    C. Neither the encoder nor decoder  
+    **D. Both the encoder and decoder**
+
+2. We are creating a Transformer using multi-headed attention, such that input embeddings of dimension 128 match the output shape of our self-attention layer. If we use multi-headed attention, with 4 heads, what dimensionality will the outputs of each head have?
+
+    **A. 32**  
+    B. 64  
+    C. 128  
+    D. 512
+
+3. The code shown below is which attention mechanism?
+
+    ```python
+    def xxxx(q, k, v, mask = None):
+        d_k = q.size()[-1]
+        attn_logits = torch.matmul(q, k, transpose(-2, -1))
+        attn_logits = attn_logits / math.sqrt(d_k)
+        if mask is not None:
+            attn_logits = attn_logits.masked_fill(mask == 0, -9e15)
+        attention = F.softmax(attn_logits, dim = -1)
+        values = torch.matmul(attention, v)
+        return values, attention
+    ```
+
+    **A. Scaled Dot-Product Attention**  
+    B. Self-Attention  
+    C. Multi-Head Attention  
+    D. None of above
+
 ### Quiz 7.4
+
+1. What is positional encoding in the Transformer model, and why is it necessary?
+
+    A. It is a technique to compute attention scores between elements from different sequences  
+    **B. It represents the absolute position of each element in the sequence and is necessary because self-attention mechanisms do not have built-in position information**  
+    C. Positional encoding is a method to prevent overfitting by injecting noise into the attention mechanism  
+    D. Positional encoding is a type of regularization technique that stabilizes the training process
+
+2. Which of the following properties will a good position encoding ideally have:
+
+    A. Unique for all positions  
+    B. Relative distances are independent of absolute sequence position  
+    C. Well-defined for arbitrary sequence lengths  
+    **D. All of above**
+
+3. Regarding sinusoidal positional encoding, what content should be filled in the blank of `<########>`:
+
+    ```python
+    class PositionalEncoding(nn.Module):
+        def __init__(self, d_model, max_len=5000):
+            """
+            Inputs
+                d_model - Hidden dimensionality of the input.
+                max_len - Maximum length of a sequence to expect.
+            """
+            super().__init__()
+            pe = torch.zeros(max_len, d_model)
+            position = torch.arange(0, max_len, dtype=torch.float).unsqueeze(1)
+            div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000.0) / d_model))
+            <########>
+            <########>
+            pe = pe.unsqueeze(0)
+            self.register_buffer('pe', pe, persistent=False)
+    ```
+
+    A.  
+    pe[:, 0::2] = torch.sin(position / div_term)  
+    pe[:, 0::2] = torch.cos(position / div_term)
+
+    **B.**  
+    pe[:, 0::2] = torch.sin(position * div_term)  
+    pe[:, 1::2] = torch.cos(position * div_term)
+
+    C.  
+    pe[:, 1::2] = torch.sin(position * div_term)  
+    pe[:, 1::2] = torch.cos(position * div_term)
+
+    D.  
+    pe[:, 1::2] = torch.sin(position / div_term)  
+    pe[:, 0::2] = torch.cos(position / div_term)
 
 ## Lecture 8
 
 ### Quiz 8.1
 
+1. For which of the following strings is it NOT possible to use byte pair encoding to shorten the string’s length?
+
+    A. "BANANA"  
+    **B. "LEVEL_UP"**  
+    C. "NEITHER_HERE_NOR_THERE"  
+    D. "MEET_ME_LATER"
+
+2. Consider a scenario where our training corpus contains, say the words "slow", "fast", and "faster", but not "slower", then if the word "slower" appears in our test corpus, our system will not know what to do with it. Which of the following tokenizations will help in tackling such problems?
+
+    A. Regular Expressions  
+    **B. Byte Pair Encoding**  
+    C. Both of them  
+    D. None of them
+
+3. Which of the following statements about byte pair encoding is true?
+
+    A. Byte pair encoding is an example of a lossy transformation because some pairs of characters are replaced by a single character.  
+    B. Byte pair encoding is an example of a lossless transformation because it can be used to transmit messages securely.  
+    **C. Byte pair encoding is an example of a lossless transformation because an encoded string can be restored to its original version.**  
+    D. Byte pair encoding is an example of a lossy transformation because it discards some of the data in the original string.
+
 ### Quiz 8.2
+
+1. In the context of Transformer-based language models, what is the primary advantage of the BERT architecture?
+
+    A. It utilizes a sparsity-inducing regularization technique for memory efficiency  
+    **B. It captures bidirectional context for each token, which is essential for various NLP tasks**  
+    C. It enables parallelized training for faster convergence  
+    D. It uses a larger number of attention heads for better interpretability
+
+2. Which part of the Transformer architecture does BERT utilize?
+
+    A. Decoder  
+    **B. Encoder**  
+    C. Neither Encoder nor Decoder  
+    D. Both Encoder and Decoder
+
+3. What type of attention mechanism does BERT use?
+
+    A. Bidirectional Self-Attention  
+    B. No Attention Mechanism  
+    **C. Multi-Head Self-Attention**  
+    D. Unidirectional Self-Attention
+
+4. What is the training objective of BERT?
+
+    **A. Masked language model and next sentence prediction**  
+    B. Next word prediction  
+    C. Text generation  
+    D. Image classification
 
 ### Quiz 8.3
 
+1. Why do we need Transformer-XL over the basic Transformer?
+
+    **A. Transformer-XL resolves the context fragmentation problem.**
+
+    **B. Transformer-XL enables learning dependency beyond a fixed length without disrupting temporal coherence.**
+
+    C. Transformers cannot learn longer-term dependency.
+
+    **D. Transformers are limited by a fixed-length context in the setting of language modeling.**
+
+2. Which of the following statements about Transformer-XL is/are correct?
+
+    **A. It learns dependency that is longer than the vanilla Transformer.**
+
+    **B. It has a better perplexity on long sequences than the vanilla Transformer.**
+
+    **C. It enables capturing longer-term dependency.**
+
+    D. It is slower than vanilla Transformers.
+
 ### Quiz 8.4
+
+1. Which of the following statements about XLNet is true?
+
+    **A. XLNet combines the advantages of autoregressive and autoencoder models.**
+
+    B. XLNet is an autoregressive model that does not use permutation.
+
+    C. XLNet is a purely autoencoder-based model like BERT.
+
+    D. XLNet does not support fine-tuning for downstream tasks.
+
+2. RoBERTa stands for which of the following?
+
+    **A. Robustly Optimized BERT with Training of Additional Data**
+
+    B. Robustly Optimized BERT Training
+
+    C. Robustly Optimized BERT with Advanced Techniques
+
+    D. Robustly Optimized BERT Approach
+
+3. What is the main focus of SpanBERT training compared to standard BERT training?
+
+    **A. Better capturing the relationships between word spans**
+
+    B. Enhancing the understanding of individual words
+
+    C. Optimizing for faster inference speeds
+
+    D. Improving named entity recognition performance
+
+4. Which of the following statements about Multilingual BERT is false?
+
+    A. It is trained on a large corpus of text in multiple languages.
+
+    **B. It uses separate vocabularies for each language.**
+
+    C. It supports cross-lingual transfer learning.
+
+    D. It can be fine-tuned for specific languages or tasks.
 
 ## Lecture 9
 
 ### Quiz 9.1
 
+1. Please match the types of model pre-training below:
+
+    (1) BART:  
+    Encoder-Decoder
+
+    (2) Transformer:  
+    Encoder-Decoder
+
+    (3) BERT:  
+    Encoder
+
+    (4) GPT, GPT-2, GPT-3:  
+    Decoder
+
+    (5) T5:  
+    Encoder-Decoder
+
+2. Which technology has significantly contributed to the rise of Large Language Models?
+
+    A. Recurrent Neural Networks (RNNs)  
+    B. Quantum Computing  
+    C. Genetic Algorithms  
+    **D. Transfer Learning and Transformer Architectures**
+
+3. In GPT-3, what does "GPT" stand for?
+
+    A. Generalized Programming Tool  
+    B. Grouped Pattern Translator  
+    C. Global Processing Technique  
+    **D. Generative Pretrained Transformer**
+
+4. What is fine-tuning in the context of Large Language Models?
+
+    A. A technique for optimizing the model's architecture  
+    B. The process of training the model from scratch on a specific task  
+    **C. The process of training the model on a narrower dataset and task-specific data after pretraining on a large corpus of text**  
+    D. A method for increasing the model's capacity to memorize data
+
 ### Quiz 9.2
+
+1. What is "few-shot learning" in the context of LLMs?
+
+    A. Learning with a small number of input features  
+    B. A technique for fine-tuning pre-trained models  
+    **C. Learning with only a small amount of data**  
+    D. Learning with a small learning rate
+
+2. In the context of LLMs, what is "zero-shot learning"?
+
+    A. A learning technique that starts from zero knowledge  
+    **B. The ability to perform tasks for which the model has not been explicitly trained, with zero examples provided**  
+    **C. Learning without any teacher or supervision**  
+    D. Training the model with zero data samples
+
+3. What challenge is often encountered when finetuning LLMs for specific applications?
+
+    **A. Large space requirement of LLMs**  
+    B. Lack of understanding of model architectures  
+    C. Limited access to computational resources  
+    **D. Difficulty in obtaining labeled datasets**  
+    **E. High training cost of LLMs**
+
+4. T/F: Smaller LLMs can struggle with one-shot and few-shot inference.
+
+    **True**
 
 ### Quiz 9.3
 
+1. T/F: Prompt Tuning is a technique used to adjust all hyperparameters of a language model.
+
+    **False**
+
+2. What are some benefits of prompt tuning?
+
+    A. Generalizes large language models’ (LLMs) commands to conduct versatile tasks  
+    **B. Helps large language models (LLMs) generate more accurate responses**  
+    **C. Enables large language models (LLMs) to adapt to a wide range of tasks**  
+    D. Enables large language models (LLMs) to be trained on small amounts of data  
+    E. Increases large language models’ (LLMs) production of unbiased responses
+
 ### Quiz 9.4
+
+1. What is a soft prompt in the context of LLM?
+
+    A. A strict and explicit input text that serves as a starting point for the model's generation.  
+    B. A technique to limit the creativity of the model and enforce specific output patterns.  
+    C. A method to control the model's behavior by adjusting the learning rate during training.  
+    **D. A set of trainable tokens that are added to a prompt and whose values are updated during additional training to improve performance on specific tasks.**
+
+2. Which of the following statements about LM-BFF are correct?
+
+    **A. It makes fewer assumptions on task resources and domain expertise and hence constitutes a strong task-agnostic method for few-shot learning.**  
+    **B. It includes prompt-based fine-tuning together with a novel pipeline for automating prompt generation.**  
+    **C. It introduces a refined strategy for dynamically and selectively incorporating demonstrations into each context.**  
+    D. It is used for fine-tuning language models on a large number of annotated examples.
+
+3. **[Instruction fine‑tuning]** involves using many prompt-completion examples as the labeled training dataset to continue training the model by updating its weights. This is different from **[in‑context learning]** where you provide prompt-completion examples during inference.
+
+4. Which of the following statements are correct?
+
+    **A. During Prefix tuning, the prefix parameters are inserted in all of the model layers.**  
+    **B. Prefix tuning prefixes a series of task-specific vectors to the input sequence that can be learned while keeping the pretrained model frozen.**  
+    C. P-tuning still needs to manually design prompts.  
+    **D. P-tuning adds trainable prompt embeddings to the input that is optimized by a prompt encoder to find a better prompt.**
+
