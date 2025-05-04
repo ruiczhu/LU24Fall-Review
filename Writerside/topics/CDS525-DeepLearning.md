@@ -1384,3 +1384,15 @@ C.
     C. P-tuning still needs to manually design prompts.  
     **D. P-tuning adds trainable prompt embeddings to the input that is optimized by a prompt encoder to find a better prompt.**
 
+## Prediction Guide
+
+1. 比较深度学习、浅层网络与机器学习的关键区别
+2. 解释损失函数(Loss)的概念及其在模型训练中的作用。什么是梯度下降法？反向传播，链式法则，计算图的计算题。
+3. 分析循环神经网络(RNN)的主要优势及应用领域。探讨梯度爆炸与梯度消失问题的成因，并提出解决方案（如梯度裁剪、门控机制等）。详细说明长短期记忆网络(LSTM)中各种门控单元的功能及其作用。比较门控循环单元(GRU)相对于LSTM的优势。
+4. CNN的卷积与pooling看图题
+5. 描述生成对抗网络(GANs)的基本架构，并介绍其核心组件（生成器、判别器、损失函数）的功能。分析最小二乘生成对抗网络(LSGANs)能够解决的特定问题。
+6. 解释字节对编码(BPE)的工作原理及其在自然语言处理中的应用。请根据给定词典，演示BPE编码的具体实现过程。
+7. 详述三种主要的预训练模型类型及其代表性模型：编码器(Encoder)如BERT、解码器(Decoder)如GPT以及编码器-解码器(Encoder-Decoder)如Transformer。分析各类模型的优缺点及适用场景。
+8. 比较三种提示词调优方法：硬提示(Hard Prompt)、软提示(Soft Prompt)和指令调优(Instruction Tuning)的实现方式、优缺点及特点。具体介绍LM-BFF、Prefix Tuning和P-Tuning等技术的原理与应用。
+9. 分析微调(Fine-tuning)和提示词调优(Prompt Tuning)在实现方式、资源需求和效果方面的主要区别。
+10. 定义大型语言模型(LLM)的概念及其在自然语言处理领域的优势。详述ChatGPT采用的三种训练方式：通过收集示范进行的监督微调(Supervised fine-tuning via collected demonstrations)、通过人类反馈的奖励模型训练(Reward model training via human feedback)以及通过近端策略优化的强化学习(Reinforcement learning via Proximal Policy Optimization)。
